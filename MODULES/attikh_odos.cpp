@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-hi kalliopi
-=======
 #include <iostream>
 #include "../INCLUDES/attikh_odos.h"
 
@@ -19,4 +16,3 @@ void attica::operate() {
      }
     
 }
->>>>>>> 62203bcd46e97b788cbf80afc42cc8676352399b
