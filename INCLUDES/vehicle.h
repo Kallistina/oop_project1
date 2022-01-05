@@ -11,5 +11,4 @@ private:
     bool ready_to_go;
 public:
     vehicle(int exit);
-    bool check_to_go();
 };

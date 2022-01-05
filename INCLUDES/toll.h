@@ -7,9 +7,10 @@ using namespace std;
 
 class toll {
 private:
-    vehicle vehicles[100];
+    vehicle** vehicles;
+    int num_of_vehicles;
 public:
     toll(int NSegs);
-    void add();
+    void add(vehicle* v);
     void sub();
 };
