@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
-#include "INCLUDES/entrance.h"
+#include "entrance.h"
 
-class segmanet{
+class segment {
 private:
     entrance seg_entrance;
     int num_of_vehicles;
@@ -11,7 +11,7 @@ private:
     int* next;
 
 public:
-    segmanet(int max){}
+    segment(int NSegs, int max);
 
     void enter(int, int);
     void exit();

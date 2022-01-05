@@ -1,5 +1,7 @@
 #pragma once 
 #include <iostream>
+#include "toll.h"
+#include "vehicle.h"
 
 using std::string;
 using namespace std;
@@ -7,9 +9,9 @@ using namespace std;
 class entrance {
 private:
     string node_name;
-    int num_of_employe_tolls;
-    int num_of_electronic_tolls;
+    toll employe_tolls[5];
+    toll electronic_tolls[5];
 public:
     entrance();
-    void operate();
+    void operate(int NSegs, int K);
 };

@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
-#include "INCLUDES/segment.h"
-#include "INCLUDES/vehicle.h"
+#include "../INCLUDES/segment.h"
+#include "../INCLUDES/vehicle.h"
 
 segment::segment(int NSegs, int max){
     srand(time(NULL));

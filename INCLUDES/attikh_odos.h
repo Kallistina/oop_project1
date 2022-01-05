@@ -1,13 +1,14 @@
 #pragma once 
 #include <iostream>
+#include "segment.h"
 
 class attica{
 private:
-    const int num_of_segments;
+    segment** segments;
     int num_of_vehicles;
 public:
     attica(const int NSegs, int vehicles);
-    void operate();
+    void operate(int NSegs);
 };
 
 
