@@ -8,10 +8,13 @@ using namespace std;
 
 class entrance {
 private:
-    string node_name;
-    toll employe_tolls[5];
-    toll electronic_tolls[5];
+    int node;
+    int num_of_tolls;
+    toll** tolls;  
 public:
-    entrance();
-    void operate(int NSegs, int K);
+    entrance(int NSegs, int K);
+    void operate(int NSegs, int K, int Capacity);
 };
+
+// toll employe_tolls[3];
+// toll electronic_tolls[3];
