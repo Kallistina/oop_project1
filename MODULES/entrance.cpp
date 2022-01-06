@@ -40,8 +40,9 @@ entrance::entrance(int NSegs, int K) : node(-1), num_of_tolls(0) {
     }
 }
 
-void entrance::operate(int NSegs, int K, int Capacity){
+int entrance::operate(int NSegs, int K, int Capacity){
 //sub
+    int vehicles_to_enter_counter=0;
     int employe_tolls_limit = K;
     int electronic_tolls_limit = 2*K;
 
@@ -54,6 +55,7 @@ void entrance::operate(int NSegs, int K, int Capacity){
                         tolls[i]->sub();
                         employe_tolls_limit--;
                         Capacity--;
+                        vehicles_to_enter_counter++;
                     }
                 }
                 else{
@@ -61,6 +63,7 @@ void entrance::operate(int NSegs, int K, int Capacity){
                         tolls[i]->sub();
                         electronic_tolls_limit--;
                         Capacity--;
+                        vehicles_to_enter_counter++;
                     }
                 }
             }
@@ -84,6 +87,8 @@ void entrance::operate(int NSegs, int K, int Capacity){
             tolls[i]->add(v);
         }
     }
+    
+    return vehicles_to_enter_counter;
 }
 
 
