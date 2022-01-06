@@ -40,8 +40,9 @@ entrance::entrance(int NSegs, int K) : node(-1), num_of_tolls(0) {
     }
 }
 
-void entrance::operate(int NSegs, int K, int Capacity){
+int entrance::operate(int NSegs, int K, int Capacity){
 //sub
+    int vehicles_to_enter_counter=0;
     int employe_tolls_limit = K;
     int electronic_tolls_limit = 2*K;
 
@@ -54,6 +55,7 @@ void entrance::operate(int NSegs, int K, int Capacity){
                         tolls[i]->sub();
                         employe_tolls_limit--;
                         Capacity--;
+                        vehicles_to_enter_counter++;
                     }
                 }
                 else{
@@ -61,20 +63,32 @@ void entrance::operate(int NSegs, int K, int Capacity){
                         tolls[i]->sub();
                         electronic_tolls_limit--;
                         Capacity--;
+                        vehicles_to_enter_counter++;
                     }
                 }
             }
             else break;
         }
     }
+
+    if(employe_tolls_limit==0 && employe_tolls_limit==0) 
+        K++;
+    else
+        K--;
+
+    for(int i=0; i<num_of_tolls; i++)
+        tolls[i]->set_speed(K);
+
 //add
     srand(time(NULL));
     for(int i=0; i<num_of_tolls; i++) {
-        for(int j=0; j<rand() % 20; j++){
-            vehicle v(rand() % NSegs);
+        for(int j=0; j<rand() % 20 + 1; j++){
+            vehicle v(rand() % NSegs + 1);
             tolls[i]->add(v);
         }
     }
+    
+    return vehicles_to_enter_counter;
 }
 
     // for(int i=0; i<5; i++){

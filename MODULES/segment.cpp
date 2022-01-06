@@ -1,30 +1,50 @@
 #include <iostream>
 using namespace std;
 #include "../INCLUDES/segment.h"
-#include "../INCLUDES/vehicle.h"
+#include "../INCLUDES/entrance.h"
+#include "../INCLUDES/vehicle.h" 
 
-segment::segment(int NSegs, int max){
+segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer) 
+    : seg_entrance(NSegs, K), previous(previous_seg), next(next_seg), pointer_to_attica(pointer) {
+
     srand(time(NULL));
-    char x=rand()%max;
-    for (int i=0; i<x; i++){
-        vehicle v(rand()%NSegs);
+
+    capacity = rand() % 100 + 50;
+
+    int rand_num_of_vehicles = rand() % 20 + 1;
+    vehicles = new vehicle*[rand_num_of_vehicles];
+
+    for (int i=0; i<rand_num_of_vehicles; i++){
+        vehicles[i] = new vehicle(rand() % NSegs + 1);
     }
+}
+
+void segment::enter(int NSegs, int K){
+    int previous_segment_vehicles = pointer_to_attica->get_segment(previous)->num_of_vehicles;
+
+    for(int i=0; i<previous_segment_vehicles; i++){
+         if (num_of_vehicles<capacity){
+             vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->vehicles[i];
+            num_of_vehicles++;
+        }
+    }
+
+    if(num_of_vehicles<capacity) 
+        num_of_vehicles += seg_entrance.operate(NSegs, K, capacity);
+}
+
+void segment::exit(){
 
 }
 
 void segment::pass(){
-    for (int i=0; i<num_of_vehicles; i++){
-        if (vehicles[num_of_vehicles-i]->check_to_go() )
-    }
-}
-
-void segment::enter(int num_of_vehicles, int max_vehicles){
-
-    if (num_of_vehicles<max_vehicles){
-        num_of_vehicles++;
-    }
+    // for (int i=0; i<num_of_vehicles; i++){
+    //     if (vehicles[num_of_vehicles-i]->check_to_go() )
+    // }
 }
 
 void segment::operate(){
 
 }
+
+  //char x=rand()%max;

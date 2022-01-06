@@ -13,7 +13,7 @@ private:
     toll** tolls;  
 public:
     entrance(int NSegs, int K);
-    void operate(int NSegs, int K, int Capacity);
+    int operate(int NSegs, int K, int Capacity);
 };
 
 // toll employe_tolls[3];

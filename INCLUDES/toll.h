@@ -12,20 +12,23 @@ protected:
     int num_of_vehicles;
     int speed;
 public:
-   // toll(int NSegs, int K);
+    toll(int NSegs, int K);
     void add(vehicle v);
     void sub();
-    int get_speed();
+    virtual void set_speed(int K)=0;
+    virtual int get_speed();
 };
 
 class employe_toll : public toll {
 public:  
     employe_toll(int NSegs, int K);
-  // int get_speed();
+    void set_speed(int K);
+    int get_speed();
 };
 
 class electronic_toll : public toll {
 public:
-    electronic_toll(int NSegs, int K);
-  //  int get_speed();
+  electronic_toll(int NSegs, int K);
+  void set_speed(int K);
+  int get_speed();
 };
