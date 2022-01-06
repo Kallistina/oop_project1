@@ -8,7 +8,7 @@ private:
     list <segment> segments;
     int num_of_vehicles;
 public:
-    attica(const int NSegs);
+    attica(int NSegs, int K);
     void operate();
 };
 

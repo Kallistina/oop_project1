@@ -7,41 +7,41 @@ using std::string;
 using namespace std;
 
 
-// toll::toll(int NSegs, int K) : num_of_vehicles(0), speed(K) {
+toll::toll(int NSegs, int K) : num_of_vehicles(0), speed(K) {
 
-//     srand(time(NULL));
-//     num_of_vehicles=rand() % 20;
-
-// //create rand vehicles for toll initialization
-//     for(int i=0; i<num_of_vehicles; i++){
-//         vehicle v(rand() % NSegs);
-//         vehicles.push(v);
-//     }
-// }
-
-employe_toll::employe_toll(int NSegs, int K)  {
     srand(time(NULL));
-   // num_of_vehicles=rand() % 20;
-   speed = K;
+    num_of_vehicles=rand() % 20;
 
 //create rand vehicles for toll initialization
-    for(int i=0; i<rand() % 20; i++){
+    for(int i=0; i<num_of_vehicles; i++){
         vehicle v(rand() % NSegs);
         vehicles.push(v);
     }
+}
+
+employe_toll::employe_toll(int NSegs, int K) : toll(NSegs, K)  {
+//     srand(time(NULL));
+//    // num_of_vehicles=rand() % 20;
+//    speed = K;
+
+// //create rand vehicles for toll initialization
+//     for(int i=0; i<rand() % 20 + 1; i++){
+//         vehicle v(rand() % NSegs + 1);
+//         vehicles.push(v);
+//     }
 
 }
 
-electronic_toll::electronic_toll(int NSegs, int K) {
-    srand(time(NULL));
-   // num_of_vehicles=rand() % 20;
-    speed = 2*K;
+electronic_toll::electronic_toll(int NSegs, int K) : toll(NSegs, K) {
+//     srand(time(NULL));
+//    // num_of_vehicles=rand() % 20;
+//     speed = 2*K;
 
-//create rand vehicles for toll initialization
-    for(int i=0; i<rand() % 20; i++){
-        vehicle v(rand() % NSegs);
-        vehicles.push(v);
-    }
+// //create rand vehicles for toll initialization
+//     for(int i=0; i<rand() % 20 + 1; i++){
+//         vehicle v(rand() % NSegs + 1);
+//         vehicles.push(v);
+//     }
 }
 
 void toll::add(vehicle v){
@@ -55,8 +55,20 @@ void toll::sub(){
    // num_of_vehicles = vehicles.size();
 }
 
-int toll::get_speed(){
+void employe_toll::set_speed(int K){
+    speed = K;
+}
+
+void electronic_toll::set_speed(int K){
+    speed = 2*K;
+}
+
+int employe_toll::get_speed(){
     return speed;
+}
+
+int electronic_toll::get_speed(){
+    return 2*speed;
 }
 
 

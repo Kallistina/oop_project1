@@ -1,15 +1,22 @@
 #include <iostream>
 using namespace std;
 #include "../INCLUDES/segment.h"
-#include "../INCLUDES/vehicle.h"
+#include "../INCLUDES/entrance.h"
+#include "../INCLUDES/vehicle.h" 
 
-segment::segment(int NSegs, int max){
+segment::segment(int NSegs, int K) : seg_entrance(NSegs, K) {
     srand(time(NULL));
-    char x=rand()%max;
-    for (int i=0; i<x; i++){
-        vehicle v(rand()%NSegs);
-    }
 
+    capacity = rand() % 100 + 50;
+    previous
+    next
+    
+    int rand_num_of_vehicles = rand() % 20 + 1;
+    vehicles = new vehicle*[rand_num_of_vehicles];
+
+    for (int i=0; i<rand_num_of_vehicles; i++){
+        vehicles[i] = new vehicle(rand() % NSegs + 1);
+    }
 }
 
 void segment::pass(){
@@ -28,3 +35,5 @@ void segment::enter(int num_of_vehicles, int max_vehicles){
 void segment::operate(){
 
 }
+
+  //char x=rand()%max;

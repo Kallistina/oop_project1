@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 	K = atoi(argv[3]);
     Percent = atoi(argv[4]);
 
-    attica my_attica(NSegs);
+    attica my_attica(NSegs, K);
 
     for(int i=0; i<N; i++) {
         my_attica.operate();
