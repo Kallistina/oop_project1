@@ -1,14 +1,15 @@
 #pragma once 
 #include <iostream>
+#include <list>
 #include "segment.h"
 
 class attica{
 private:
-    segment** segments;
+    list <segment> segments;
     int num_of_vehicles;
 public:
-    attica(const int NSegs, int vehicles);
-    void operate(int NSegs);
+    attica(const int NSegs);
+    void operate();
 };
 
 
