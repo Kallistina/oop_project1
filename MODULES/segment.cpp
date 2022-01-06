@@ -24,6 +24,8 @@ void segment::enter(int NSegs, int K){
 
     for(int i=0; i<previous_segment_vehicles; i++){
          if (num_of_vehicles<capacity){
+
+             //tsekare mhpos einai null logv exit
              vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->vehicles[i];
             num_of_vehicles++;
         }
@@ -34,13 +36,17 @@ void segment::enter(int NSegs, int K){
 }
 
 void segment::exit(){
-
+//ta antigrafoume se enan pinaka idias xoritikothtas
+//diagrafoume ton palio, kratame ton kainourgio
 }
 
 void segment::pass(){
     // for (int i=0; i<num_of_vehicles; i++){
     //     if (vehicles[num_of_vehicles-i]->check_to_go() )
     // }
+}
+int segment::get_no_of_vehicles() {
+    return num_of_vehicles;
 }
 
 void segment::operate(){
