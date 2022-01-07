@@ -5,7 +5,7 @@ using namespace std;
 #include "../INCLUDES/vehicle.h" 
 
 segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer) 
-    : seg_entrance(NSegs, K), previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0) {
+    : seg_entrance(NSegs, K, this), previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0) {
 
     srand(time(NULL));
 
@@ -56,6 +56,16 @@ void segment::enter(int NSegs, int K){
     }
     if(num_of_vehicles<capacity) 
         num_of_vehicles += seg_entrance.operate(NSegs, K, capacity);
+
+
+    // while(num_of_vehicles<capacity) {
+    //     vehicle* toll_vehicle = seg_entrance.operate(NSegs, K, capacity);
+    //     if(toll_vehicle!=NULL) {
+    //         vehicles[num_of_vehicles-1] = toll_vehicle;
+    //         num_of_vehicles++;
+    //         capacity--;
+    //     }
+    // }
 }
 
 void segment::exit(){
@@ -98,7 +108,7 @@ void segment::pass(int i){
     //     // }
     // }
     int next_segment_num_of_vehicles = pointer_to_attica->get_segment(next)->num_of_vehicles;
-    vehicles[next_segment_num_of_vehicles-1] = vehicles[i];
+    pointer_to_attica->get_segment(next)->vehicles[next_segment_num_of_vehicles-1] = vehicles[i];
     next_segment_num_of_vehicles++;
     vehicles[i]=NULL;
 

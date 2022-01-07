@@ -9,13 +9,14 @@ using namespace std;
 class segment {
 private:
     entrance seg_entrance;
-    vehicle** vehicles;
+    
     int capacity;
     int previous;
     int next;
     attica* pointer_to_attica;
     int num_of_vehicles;
 public:
+    vehicle** vehicles;
     segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer);
     void enter(int NSegs, int K);
     void exit();
