@@ -21,5 +21,5 @@ public:
     void exit();
     void pass();
     int get_no_of_vehicles();
-    void operate();
+    void operate(int percent);
 };

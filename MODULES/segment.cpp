@@ -36,7 +36,6 @@ void segment::enter(int NSegs, int K){
     // if(num_of_vehicles<capacity) 
     //     num_of_vehicles += seg_entrance.operate(NSegs, K, capacity);
 
-
     if (previous != -1) {
         int previous_segment_capacity = pointer_to_attica->get_segment(previous)->capacity;
 
@@ -49,8 +48,8 @@ void segment::enter(int NSegs, int K){
                             vehicles[j] = current_vehicle;
                             num_of_vehicles++;
                         }
-                    } 
-                }  
+                    }
+                }
             }
             else break;
         }
@@ -60,9 +59,14 @@ void segment::enter(int NSegs, int K){
 }
 
 void segment::exit(){
-
+    int k=0;
     for(int i=0; i<num_of_vehicles; i++){
         if(vehicles[i]->ready_to_go()) {
+            vehicles[i]=NULL;
+        }
+        else{
+            vehicles[k]=vehicles[i];
+            k++;
             vehicles[i]=NULL;
         }
     }
@@ -71,16 +75,37 @@ void segment::exit(){
 }
 
 void segment::pass(){
-    // for (int i=0; i<num_of_vehicles; i++){
-    //     if (vehicles[num_of_vehicles-i]->check_to_go() )
-    // }
+    for (int i=0; i<num_of_vehicles; i++){
+        if (vehicles[num_of_vehicles-i]->ready_to_go()){
+            int next_segment_capacity = pointer_to_attica->get_segment(next)->capacity;
+            if (next_segment_capacity>0){
+                //next has to be array, not an int
+                //next->vehicles[next->num_of_vehicles]=vehicles[i];
+                vehicles[i]=NULL;
+                // next->num_of_vehicles++;
+                next_segment_capacity--;
+                num_of_vehicles--;
+            }
+                
+        }
+        // else{
+        //     vehicles[k]=vehicles[i];
+        //     k++;
+        //     vehicles[i]=NULL;
+        // }
+    }
 }
+
 int segment::get_no_of_vehicles() {
     return num_of_vehicles;
 }
 
-void segment::operate(){
-
+void segment::operate(int percent){
+    int num_of_readys = percent*num_of_vehicles/100;
+    for (int i=0; i<num_of_readys && i<num_of_vehicles; i++){
+        vehicles[i]->ready_to_go();
+        // vehicles[i]->  get_destination
+    }
 }
 
   //char x=rand()%max;

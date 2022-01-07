@@ -15,3 +15,5 @@ public:
     //int get_current_segment();
     bool ready_to_go();
 };
+
+//το νεχτ πρεπει να εχει εναν μετρητη κ και τον δικο του πινακα
