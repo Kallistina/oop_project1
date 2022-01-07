@@ -5,7 +5,8 @@
 using std::string;
 using namespace std;
 
-entrance::entrance(int NSegs, int K, segment* pointer) : node(-1), num_of_tolls(0), pointer_to_segment(pointer){
+entrance::entrance(int NSegs, int K, segment* pointer) 
+    : node(-1), num_of_tolls(0), pointer_to_segment(pointer), num_of_vehicles(0) {
 
     srand(time(NULL));
 
@@ -89,6 +90,10 @@ int entrance::operate(int NSegs, int K, int Capacity){
         }
     }
     
+    for(int i=0; i<num_of_tolls; i++) {
+        for(int j=0; j<tolls[i]->num_of_vehicles; j++)
+            num_of_vehicles++;
+    }
     return vehicles_to_enter_counter;
 }
 

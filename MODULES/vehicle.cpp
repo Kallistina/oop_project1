@@ -16,3 +16,7 @@ bool vehicle::exit_attica() {
         return true;
     return false;
 }
+
+bool vehicle::set_exit_segment(bool ready) {
+    exit_segment=ready;
+}

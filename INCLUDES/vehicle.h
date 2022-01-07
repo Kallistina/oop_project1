@@ -8,11 +8,11 @@ class vehicle {
 private:
     int exit_node;
     int current_segment;
-    bool exit_segment;
 public:
+    bool exit_segment;
     vehicle(int exit);
     void set_current_segment(int i);
-    //int get_current_segment();
+    bool set_exit_segment(bool ready);
     bool exit_attica();
 };
 

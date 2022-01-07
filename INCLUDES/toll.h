@@ -9,9 +9,9 @@ using namespace std;
 class toll {
 protected:
     queue <vehicle> vehicles;
-    int num_of_vehicles;
     int speed;
 public:
+    int num_of_vehicles;
     toll(int NSegs, int K);
     void add(vehicle v);
     void sub();

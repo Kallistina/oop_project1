@@ -8,8 +8,6 @@ using namespace std;
 
 class segment {
 private:
-    entrance seg_entrance;
-    
     int capacity;
     int previous;
     int next;
@@ -17,10 +15,11 @@ private:
     int num_of_vehicles;
 public:
     vehicle** vehicles;
+    entrance seg_entrance;
     segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer);
-    void enter(int NSegs, int K);
+    int enter(int NSegs, int K);
     void exit();
     void pass(int i);
     int get_no_of_vehicles();
-    void operate(int Percent);
+    void operate(int NSegs, int K, int Percent);
 };

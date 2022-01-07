@@ -9,11 +9,12 @@ using namespace std;
 
 class entrance {
 private:
-    int node;
     int num_of_tolls;
     toll** tolls;  
     segment* pointer_to_segment;
 public:
+    int node;
+    int num_of_vehicles;
     entrance(int NSegs, int K, segment* pointer);
     int operate(int NSegs, int K, int Capacity);
 };
