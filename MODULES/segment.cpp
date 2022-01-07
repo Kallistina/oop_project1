@@ -61,7 +61,7 @@ void segment::enter(int NSegs, int K){
 void segment::exit(){
     int copy_pointer=0;
     for(int i=0; i<num_of_vehicles; i++){
-        if(vehicles[i]->ready_to_go()) {
+        if(vehicles[i]->exit_attica()) {
             num_of_vehicles--;
             vehicles[i]=NULL;
         }
@@ -108,10 +108,10 @@ int segment::get_no_of_vehicles() {
     return num_of_vehicles;
 }
 
-void segment::operate(int percent){
-    int num_of_readys = percent*num_of_vehicles/100;
+void segment::operate(int Percent){
+    int num_of_readys = Percent*num_of_vehicles/100;
     for (int i=0; i<num_of_readys && i<num_of_vehicles; i++){
-        vehicles[i]->ready_to_go();
+        vehicles[i]->exit_attica();
         // vehicles[i]->  get_destination
     }
 }
