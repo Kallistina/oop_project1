@@ -74,26 +74,31 @@ void segment::exit(){
 //diagrafoume ton palio, kratame ton kainourgio
 }
 
-void segment::pass(){
-    for (int i=0; i<num_of_vehicles; i++){
-        if (vehicles[num_of_vehicles-i]->ready_to_go()){
-            int next_segment_capacity = pointer_to_attica->get_segment(next)->capacity;
-            if (next_segment_capacity>0){
-                //next has to be array, not an int
-                //next->vehicles[next->num_of_vehicles]=vehicles[i];
-                vehicles[i]=NULL;
-                // next->num_of_vehicles++;
-                next_segment_capacity--;
-                num_of_vehicles--;
-            }
+void segment::pass(int i){
+    // for (int i=0; i<num_of_vehicles; i++){
+    //     if (vehicles[num_of_vehicles-i]->ready_to_go()){
+    //         int next_segment_capacity = pointer_to_attica->get_segment(next)->capacity;
+    //         if (next_segment_capacity>0){
+    //             //next has to be array, not an int
+    //             //next->vehicles[next->num_of_vehicles]=vehicles[i];
+    //             vehicles[i]=NULL;
+    //             // next->num_of_vehicles++;
+    //             next_segment_capacity--;
+    //             num_of_vehicles--;
+    //         }
                 
-        }
-        // else{
-        //     vehicles[k]=vehicles[i];
-        //     k++;
-        //     vehicles[i]=NULL;
-        // }
-    }
+    //     }
+    //     // else{
+    //     //     vehicles[k]=vehicles[i];
+    //     //     k++;
+    //     //     vehicles[i]=NULL;
+    //     // }
+    // }
+    int next_segment_num_of_vehicles = pointer_to_attica->get_segment(next)->num_of_vehicles;
+    vehicles[next_segment_num_of_vehicles-1] = vehicles[i];
+    next_segment_num_of_vehicles++;
+    vehicles[i]=NULL;
+
 }
 
 int segment::get_no_of_vehicles() {

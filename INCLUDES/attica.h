@@ -10,7 +10,7 @@ private:
     int num_of_vehicles;
 public:
     attica(int NSegs, int K);
-    void operate(int NSegs);
+    void operate(int NSegs, int Percent);
     segment* get_segment(int i);
 };
 

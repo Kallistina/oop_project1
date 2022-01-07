@@ -19,7 +19,7 @@ public:
     segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer);
     void enter(int NSegs, int K);
     void exit();
-    void pass();
+    void pass(int i);
     int get_no_of_vehicles();
-    void operate(int percent);
+    void operate(int Percent);
 };
