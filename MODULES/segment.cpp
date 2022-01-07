@@ -59,15 +59,18 @@ void segment::enter(int NSegs, int K){
 }
 
 void segment::exit(){
-    int k=0;
+    int copy_pointer=0;
     for(int i=0; i<num_of_vehicles; i++){
         if(vehicles[i]->ready_to_go()) {
+            num_of_vehicles--;
             vehicles[i]=NULL;
         }
-        else{
-            vehicles[k]=vehicles[i];
-            k++;
-            vehicles[i]=NULL;
+        else{         
+            if (i!=copy_pointer){
+                vehicles[copy_pointer]=vehicles[i];
+                copy_pointer++;
+                vehicles[i]=NULL;
+            }
         }
     }
 //ta antigrafoume se enan pinaka idias xoritikothtas
