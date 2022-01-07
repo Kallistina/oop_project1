@@ -8,7 +8,7 @@
 using namespace std;
 
 class attica;
-//class entrance;
+class entrance;
 
 class segment {
 private:
