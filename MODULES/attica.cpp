@@ -14,11 +14,11 @@ attica::attica(const int NSegs, int K) : num_of_vehicles(0) {
 
     for(int i=0; i<NSegs; i++){
         if(i==0){
-            segments[i] = new segment(NSegs, K, NULL, i+1, this);
+            segments[i] = new segment(NSegs, K, -1, i+1, this);
             segments[i]->seg_entrance.node = i;
         }
         else if(i==NSegs-1){
-            segments[i] = new segment(NSegs, K, i-1, NULL, this);
+            segments[i] = new segment(NSegs, K, i-1, -1, this);
         }
         else{
             segments[i] = new segment(NSegs, K, i-1, i+1, this);

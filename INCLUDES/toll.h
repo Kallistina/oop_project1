@@ -6,6 +6,8 @@
 using std::string;
 using namespace std;
 
+class vehicle;
+
 class toll {
 protected:
     queue <vehicle> vehicles;

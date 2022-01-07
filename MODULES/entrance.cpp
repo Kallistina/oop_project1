@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../INCLUDES/entrance.h"
+#include "../INCLUDES/segment.h"
 #include "../INCLUDES/toll.h"
 
 using std::string;

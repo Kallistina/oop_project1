@@ -12,7 +12,7 @@ public:
     bool exit_segment;
     vehicle(int exit);
     void set_current_segment(int i);
-    bool set_exit_segment(bool ready);
+    //bool set_exit_segment(bool ready);
     bool exit_attica();
 };
 

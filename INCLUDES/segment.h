@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <list>
 #include "attica.h"
@@ -5,6 +6,9 @@
 #include "vehicle.h"
 
 using namespace std;
+
+class attica;
+//class entrance;
 
 class segment {
 private:

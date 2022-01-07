@@ -3,6 +3,8 @@
 #include <list>
 #include "segment.h"
 
+class segment;
+
 class attica{
 private:
    // list <segment> segments;

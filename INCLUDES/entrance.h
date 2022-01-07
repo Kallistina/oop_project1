@@ -7,6 +7,9 @@
 using std::string;
 using namespace std;
 
+class toll;
+class segment;
+
 class entrance {
 private:
     int num_of_tolls;

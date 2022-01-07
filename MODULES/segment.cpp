@@ -119,7 +119,7 @@ void segment::pass(int i){
     int next_segment_num_of_vehicles = pointer_to_attica->get_segment(next)->num_of_vehicles;
     pointer_to_attica->get_segment(next)->vehicles[next_segment_num_of_vehicles-1] = vehicles[i];
     next_segment_num_of_vehicles++;
-    vehicles[i]->set_exit_segment(false);
+    vehicles[i]->exit_segment=false;
     vehicles[i]=NULL;
 
 }
@@ -138,7 +138,7 @@ void segment::operate(int NSegs, int K, int Percent){
     while (counter!=num_of_exit_segment) {
         int rand_i = rand() % (num_of_vehicles-1) ;
         if(vehicles[rand_i]->exit_segment == false){
-            vehicles[rand_i]->set_exit_segment(true);
+            vehicles[rand_i]->exit_segment=true;
             counter++;
         }
     }
