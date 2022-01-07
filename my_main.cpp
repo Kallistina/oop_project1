@@ -5,7 +5,6 @@
 #include "INCLUDES/toll.h"
 #include "INCLUDES/vehicle.h"
 
-
 using std::string;
 using namespace std;
 
@@ -21,9 +20,7 @@ int main(int argc, char* argv[]) {
 
     attica my_attica(NSegs, K);
 
-    for(int i=0; i<N; i++) {
+    for(int i=0; i<N; i++)
         my_attica.operate(NSegs);
-
-    }
 
 }

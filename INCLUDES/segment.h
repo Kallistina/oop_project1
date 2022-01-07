@@ -20,6 +20,6 @@ public:
     void enter(int NSegs, int K);
     void exit();
     void pass();
-    void get_no_of_vehicles();
+    int get_no_of_vehicles();
     void operate();
 };
