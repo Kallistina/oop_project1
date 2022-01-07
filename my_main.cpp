@@ -5,7 +5,6 @@
 #include "INCLUDES/toll.h"
 #include "INCLUDES/vehicle.h"
 
-
 using std::string;
 using namespace std;
 
