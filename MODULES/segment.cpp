@@ -166,7 +166,6 @@ void segment::operate(int NSegs, int K, int Percent){
                 }
             }
             if(num_of_vehicles!=capacity) {
-<<<<<<< HEAD
                 int copy_pointer=0;
                 for(int i=0; i<num_of_vehicles; i++){
                     if (vehicles[i]!=NULL){
@@ -176,10 +175,6 @@ void segment::operate(int NSegs, int K, int Percent){
                         copy_pointer++; 
                     }
                 }
-=======
-
-
->>>>>>> 645ceae0cad70610883d0d07f4e588183cb5d765
             }
             flag=true;
         }
