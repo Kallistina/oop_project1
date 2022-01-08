@@ -18,8 +18,8 @@ public:
     toll(int NSegs, int K);
     void add(vehicle v);
     void sub();
-    virtual void set_speed(int K);
-    virtual int get_speed();
+    virtual void set_speed(int K)=0;
+    virtual int get_speed()=0;
 };
 
 class employe_toll : public toll {
