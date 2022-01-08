@@ -166,6 +166,7 @@ void segment::operate(int NSegs, int K, int Percent){
                 }
             }
             if(num_of_vehicles!=capacity) {
+<<<<<<< HEAD
                 int copy_pointer=0;
                 for(int i=0; i<num_of_vehicles; i++){
                     if (vehicles[i]!=NULL){
@@ -175,6 +176,10 @@ void segment::operate(int NSegs, int K, int Percent){
                         copy_pointer++; 
                     }
                 }
+=======
+
+
+>>>>>>> 645ceae0cad70610883d0d07f4e588183cb5d765
             }
             flag=true;
         }
@@ -197,3 +202,16 @@ void segment::operate(int NSegs, int K, int Percent){
     //     vehicles[i]->exit_attica();
     //     // vehicles[i]->  get_destination
     // }  
+
+                    // vehicle** help_array;
+                // int help=0;
+                // help_array = new vehicle*[num_of_vehicles];
+                // for(int i=0; i<capacity; i++) {
+                //     if(vehicles[i]!=NULL) {
+                //         help_array[help] = vehicles[i];
+                //         vehicles[i] == NULL;
+                //         help++;
+                //     }
+                // }
+                // for(int i=0; i<help; i++)
+                //     vehicles[i] = help_array[i];
