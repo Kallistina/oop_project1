@@ -22,22 +22,6 @@ segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* point
 }
 
 int segment::enter(int NSegs, int K){
-    // if (previous != -1) {
-    //     int previous_segment_vehicles = pointer_to_attica->get_segment(previous)->num_of_vehicles;
-
-    //     for(int i=0; i<previous_segment_vehicles; i++){
-    //         if (num_of_vehicles<capacity){
-
-    //          //tsekare mhpos einai null logv exit
-    //             vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->vehicles[i];
-    //             num_of_vehicles++;
-    //         }
-    //         else break;
-    //     }
-    // }
-    // if(num_of_vehicles<capacity) 
-    //     num_of_vehicles += seg_entrance.operate(NSegs, K, capacity);
-
     if (previous != -1) {
         int previous_segment_capacity = pointer_to_attica->get_segment(previous)->capacity;
 
@@ -64,16 +48,6 @@ int segment::enter(int NSegs, int K){
     } 
         
     return enter_toll_vehicles;
-
-
-    // while(num_of_vehicles<capacity) {
-    //     vehicle* toll_vehicle = seg_entrance.operate(NSegs, K, capacity);
-    //     if(toll_vehicle!=NULL) {
-    //         vehicles[num_of_vehicles-1] = toll_vehicle;
-    //         num_of_vehicles++;
-    //         capacity--;
-    //     }
-    // }
 }
 
 void segment::exit(){
@@ -94,31 +68,9 @@ void segment::exit(){
             }
         } 
     }
-    
-//ta antigrafoume se enan pinaka idias xoritikothtas
-//diagrafoume ton palio, kratame ton kainourgio
 }
 
 void segment::pass(int i){
-    // for (int i=0; i<num_of_vehicles; i++){
-    //     if (vehicles[num_of_vehicles-i]->ready_to_go()){
-    //         int next_segment_capacity = pointer_to_attica->get_segment(next)->capacity;
-    //         if (next_segment_capacity>0){
-    //             //next has to be array, not an int
-    //             //next->vehicles[next->num_of_vehicles]=vehicles[i];
-    //             vehicles[i]=NULL;
-    //             // next->num_of_vehicles++;
-    //             next_segment_capacity--;
-    //             num_of_vehicles--;
-    //         }
-                
-    //     }
-    //     // else{
-    //     //     vehicles[k]=vehicles[i];
-    //     //     k++;
-    //     //     vehicles[i]=NULL;
-    //     // }
-    // }
     int next_segment_num_of_vehicles = pointer_to_attica->get_segment(next)->num_of_vehicles;
     pointer_to_attica->get_segment(next)->vehicles[next_segment_num_of_vehicles-1] = vehicles[i];
     next_segment_num_of_vehicles++;
@@ -192,6 +144,16 @@ void segment::operate(int NSegs, int K, int Percent){
     }    
 }
 
+
+
+
+
+
+
+
+
+
+
     // int num_of_readys = Percent*num_of_vehicles/100;
     // for (int i=0; i<num_of_readys && i<num_of_vehicles; i++){
     //     vehicles[i]->exit_attica();
@@ -210,3 +172,56 @@ void segment::operate(int NSegs, int K, int Percent){
                 // }
                 // for(int i=0; i<help; i++)
                 //     vehicles[i] = help_array[i];
+
+
+//ENTERRRRRRRRRRRRRRRR
+
+    // if (previous != -1) {
+    //     int previous_segment_vehicles = pointer_to_attica->get_segment(previous)->num_of_vehicles;
+
+    //     for(int i=0; i<previous_segment_vehicles; i++){
+    //         if (num_of_vehicles<capacity){
+
+    //          //tsekare mhpos einai null logv exit
+    //             vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->vehicles[i];
+    //             num_of_vehicles++;
+    //         }
+    //         else break;
+    //     }
+    // }
+    // if(num_of_vehicles<capacity) 
+    //     num_of_vehicles += seg_entrance.operate(NSegs, K, capacity);
+
+
+
+        // while(num_of_vehicles<capacity) {
+    //     vehicle* toll_vehicle = seg_entrance.operate(NSegs, K, capacity);
+    //     if(toll_vehicle!=NULL) {
+    //         vehicles[num_of_vehicles-1] = toll_vehicle;
+    //         num_of_vehicles++;
+    //         capacity--;
+    //     }
+    // }
+
+
+//PASSSSSSSSSSSSSSSSSSSSS
+
+    // for (int i=0; i<num_of_vehicles; i++){
+    //     if (vehicles[num_of_vehicles-i]->ready_to_go()){
+    //         int next_segment_capacity = pointer_to_attica->get_segment(next)->capacity;
+    //         if (next_segment_capacity>0){
+    //             //next has to be array, not an int
+    //             //next->vehicles[next->num_of_vehicles]=vehicles[i];
+    //             vehicles[i]=NULL;
+    //             // next->num_of_vehicles++;
+    //             next_segment_capacity--;
+    //             num_of_vehicles--;
+    //         }
+                
+    //     }
+    //     // else{
+    //     //     vehicles[k]=vehicles[i];
+    //     //     k++;
+    //     //     vehicles[i]=NULL;
+    //     // }
+    // }
