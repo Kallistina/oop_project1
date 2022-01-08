@@ -5,9 +5,11 @@ using namespace std;
 #include "../INCLUDES/vehicle.h" 
 
 segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer) 
-    : seg_entrance(NSegs, K, this), previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0) {
-
+    :  previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0) {
+//seg_entrance(NSegs, K, this),
     srand(time(NULL));
+
+    seg_entrance = new entrance(NSegs, K, this);
 
     capacity = rand() % 100 + 50;
 
@@ -57,7 +59,7 @@ int segment::enter(int NSegs, int K){
 
     int enter_toll_vehicles=0;
     if(num_of_vehicles<capacity) {
-        enter_toll_vehicles = seg_entrance.operate(NSegs, K, capacity);
+        enter_toll_vehicles = seg_entrance->operate(NSegs, K, capacity);
         num_of_vehicles += enter_toll_vehicles;
     } 
         
@@ -82,12 +84,13 @@ void segment::exit(){
                 num_of_vehicles--;
                 vehicles[i]=NULL;
             }
-            else{         
+            else{       
                 if (i!=copy_pointer){
                     vehicles[copy_pointer]=vehicles[i];
-                    copy_pointer++;
+                    //copy_pointer++;
                     vehicles[i]=NULL;
                 }
+                copy_pointer++; 
             }
         } 
     }
@@ -163,19 +166,22 @@ void segment::operate(int NSegs, int K, int Percent){
                     num_of_exit_vehicles--;
                 }
             }
+            if(num_of_vehicles!=capacity) {
+                
+            }
             flag=true;
         }
 
         int enter_toll_vehicles = enter(NSegs, K);  
         bool flag2=false;
-        if(enter_toll_vehicles < seg_entrance.num_of_vehicles) {
-            cout << "Delays in entrance of node " << seg_entrance.node << endl;
+        if(enter_toll_vehicles < seg_entrance->num_of_vehicles) {
+            cout << "Delays in entrance of node " << seg_entrance->node << endl;
             flag2=true;
         } 
         if(flag) 
-            cout << "Delays after the node " << seg_entrance.node << endl;
+            cout << "Delays after the node " << seg_entrance->node << endl;
         if(flag==false && flag2==false)
-            cout << "Keep a safe distance in the segment after the node " << seg_entrance.node << endl;
+            cout << "Keep a safe distance in the segment after the node " << seg_entrance->node << endl;
     }    
 }
 
