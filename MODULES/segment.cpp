@@ -124,7 +124,6 @@ void segment::pass(int i){
     next_segment_num_of_vehicles++;
     vehicles[i]->exit_segment=false;
     vehicles[i]=NULL;
-
 }
 
 int segment::get_no_of_vehicles() {
@@ -167,7 +166,16 @@ void segment::operate(int NSegs, int K, int Percent){
                 }
             }
             if(num_of_vehicles!=capacity) {
-                
+                int copy_pointer=0;
+                for(int i=0; i<num_of_vehicles; i++){
+                    if (vehicles[i]!=NULL){
+                        if (i!=copy_pointer){
+                            vehicles[copy_pointer]=vehicles[i];
+                        }
+                        copy_pointer++; 
+                    }
+                    
+                }
             }
             flag=true;
         }
