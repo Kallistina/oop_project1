@@ -19,7 +19,7 @@ private:
     int num_of_vehicles;
 public:
     vehicle** vehicles;
-    entrance seg_entrance;
+    entrance* seg_entrance;
     segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer);
     int enter(int NSegs, int K);
     void exit();

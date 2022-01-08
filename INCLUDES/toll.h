@@ -5,6 +5,7 @@
 
 using std::string;
 using namespace std;
+using std::queue;
 
 class vehicle;
 
