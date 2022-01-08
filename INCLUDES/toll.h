@@ -18,7 +18,7 @@ public:
     toll(int NSegs, int K);
     void add(vehicle v);
     void sub();
-    virtual void set_speed(int K)=0;
+    virtual void set_speed(int K);
     virtual int get_speed();
 };
 

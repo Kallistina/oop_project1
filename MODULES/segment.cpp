@@ -167,7 +167,8 @@ void segment::operate(int NSegs, int K, int Percent){
                 }
             }
             if(num_of_vehicles!=capacity) {
-                
+
+
             }
             flag=true;
         }
@@ -190,3 +191,16 @@ void segment::operate(int NSegs, int K, int Percent){
     //     vehicles[i]->exit_attica();
     //     // vehicles[i]->  get_destination
     // }  
+
+                    // vehicle** help_array;
+                // int help=0;
+                // help_array = new vehicle*[num_of_vehicles];
+                // for(int i=0; i<capacity; i++) {
+                //     if(vehicles[i]!=NULL) {
+                //         help_array[help] = vehicles[i];
+                //         vehicles[i] == NULL;
+                //         help++;
+                //     }
+                // }
+                // for(int i=0; i<help; i++)
+                //     vehicles[i] = help_array[i];
