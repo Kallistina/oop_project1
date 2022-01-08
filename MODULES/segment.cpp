@@ -124,7 +124,6 @@ void segment::pass(int i){
     next_segment_num_of_vehicles++;
     vehicles[i]->exit_segment=false;
     vehicles[i]=NULL;
-
 }
 
 int segment::get_no_of_vehicles() {
