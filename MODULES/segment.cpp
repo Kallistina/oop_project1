@@ -174,7 +174,6 @@ void segment::operate(int NSegs, int K, int Percent){
                         }
                         copy_pointer++; 
                     }
-                    
                 }
             }
             flag=true;
