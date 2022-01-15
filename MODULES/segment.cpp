@@ -74,7 +74,7 @@ void segment::pass(int i){
     int next_segment_num_of_vehicles = pointer_to_attica->get_segment(next)->num_of_vehicles;
     pointer_to_attica->get_segment(next)->vehicles[next_segment_num_of_vehicles-1] = vehicles[i];
     next_segment_num_of_vehicles++;
-    vehicles[i]->exit_segment=false;
+    vehicles[i]->set_exit_segment(false);
     vehicles[i]=NULL;
 }
 
@@ -91,8 +91,8 @@ void segment::operate(int NSegs, int K, int Percent){
     int counter=0;
     while (counter!=num_of_exit_segment) {
         int rand_i = rand() % (num_of_vehicles-1) ;
-        if(vehicles[rand_i]->exit_segment == false){
-            vehicles[rand_i]->exit_segment=true;
+        if(vehicles[rand_i]->get_exit_segment() == false){
+            vehicles[rand_i]->set_exit_segment(true);
             counter++;
         }
     }
@@ -101,7 +101,7 @@ void segment::operate(int NSegs, int K, int Percent){
         bool flag=false;
         num_of_exit_segment=0;
         for(int i=0; i<num_of_vehicles; i++){
-            if(vehicles[i]->exit_segment==true)
+            if(vehicles[i]->get_exit_segment()==true)
                 num_of_exit_segment++;
         }
         if(pointer_to_attica->get_segment(next)->capacity >= num_of_exit_segment){
@@ -112,7 +112,7 @@ void segment::operate(int NSegs, int K, int Percent){
             int num_of_exit_vehicles = num_of_exit_segment - pointer_to_attica->get_segment(next)->capacity;
             while (num_of_exit_vehicles>0) {
                 int rand_i = rand() % (num_of_vehicles-1) ;
-                if(vehicles[rand_i]->exit_segment == true){
+                if(vehicles[rand_i]->get_exit_segment() == true){
                     pass(rand_i);
                     num_of_exit_vehicles--;
                 }

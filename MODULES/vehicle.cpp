@@ -4,7 +4,7 @@
 using std::string;
 using namespace std;
 
-vehicle::vehicle(int exit) : exit_node(exit), current_segment(-1), exit_segment(false) {   
+vehicle::vehicle(int exit) : exit_node(exit), current_segment(-1), ready(false) {   
 }
 
 void vehicle::set_current_segment(int i) {
@@ -17,6 +17,10 @@ bool vehicle::exit_attica() {
     return false;
 }
 
-// bool vehicle::set_exit_segment(bool ready) {
-//     exit_segment=ready;
-// }
+void vehicle::set_exit_segment(bool ready_) {
+    ready=ready_;
+}
+
+bool vehicle::get_exit_segment() {
+    return ready;
+}
