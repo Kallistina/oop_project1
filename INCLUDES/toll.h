@@ -31,7 +31,7 @@ public:
 
 class electronic_toll : public toll {
 public:
-  electronic_toll(int NSegs, int K);
-  void set_speed(int K);
-  int get_speed();
+    electronic_toll(int NSegs, int K);
+    void set_speed(int K);
+    int get_speed();
 };
