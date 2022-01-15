@@ -12,26 +12,26 @@ class vehicle;
 class toll {
 protected:
     queue <vehicle> vehicles;
+    int num_of_vehicles;
     int speed;
 public:
-    int num_of_vehicles;
     toll(int NSegs, int K);
+    int get_num_of_vehicles();
     void add(vehicle v);
     void sub();
+    vehicle& get_vehicle();
+    int get_speed();
     virtual void set_speed(int K)=0;
-    virtual int get_speed()=0;
 };
 
 class employe_toll : public toll {
 public:  
     employe_toll(int NSegs, int K);
     void set_speed(int K);
-    int get_speed();
 };
 
 class electronic_toll : public toll {
 public:
-  electronic_toll(int NSegs, int K);
-  void set_speed(int K);
-  int get_speed();
+    electronic_toll(int NSegs, int K);
+    void set_speed(int K);
 };

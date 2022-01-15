@@ -13,11 +13,14 @@ class segment;
 class entrance {
 private:
     int num_of_tolls;
+    int num_of_vehicles;
+    int node;
     toll** tolls;  
     segment* pointer_to_segment;
-public:
-    int node;
-    int num_of_vehicles;
+public:  
     entrance(int NSegs, int K, segment* pointer);
+    int get_num_of_vehicles();
+    int get_node();
+    void set_node(int i);
     int operate(int NSegs, int K, int Capacity);
 };

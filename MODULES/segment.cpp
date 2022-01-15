@@ -133,14 +133,14 @@ void segment::operate(int NSegs, int K, int Percent){
 
         int enter_toll_vehicles = enter(NSegs, K);  
         bool flag2=false;
-        if(enter_toll_vehicles < seg_entrance->num_of_vehicles) {
-            cout << "Delays in entrance of node " << seg_entrance->node << endl;
+        if(enter_toll_vehicles < seg_entrance->get_num_of_vehicles()) {
+            cout << "Delays in entrance of node " << seg_entrance->get_node() << endl;
             flag2=true;
         } 
         if(flag) 
-            cout << "Delays after the node " << seg_entrance->node << endl;
+            cout << "Delays after the node " << seg_entrance->get_node()<< endl;
         if(flag==false && flag2==false)
-            cout << "Keep a safe distance in the segment after the node " << seg_entrance->node << endl;
+            cout << "Keep a safe distance in the segment after the node " << seg_entrance->get_node() << endl;
     }    
 }
 

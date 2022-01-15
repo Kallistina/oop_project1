@@ -42,30 +42,43 @@ entrance::entrance(int NSegs, int K, segment* pointer)
     }
 }
 
+int entrance::get_num_of_vehicles() {
+    return num_of_vehicles;
+}
+
+int entrance::get_node() {
+    return node;
+}
+
+void entrance::set_node(int i) {
+    node=i;
+}
+
 int entrance::operate(int NSegs, int K, int Capacity){
 //sub
     int vehicles_to_enter_counter=0;
     int employe_tolls_limit = K;
     int electronic_tolls_limit = 2*K;
 
-    while (Capacity!=0 && (employe_tolls_limit==0 || employe_tolls_limit==0))
+    while (Capacity>0 && (employe_tolls_limit==0 || employe_tolls_limit==0))
     {
         for(int i=0; i<num_of_tolls; i++) {
             if(Capacity>0){
                 if(tolls[i]->get_speed() == K){
                     if(employe_tolls_limit>0){
-                        pointer_to_segment->vehicles[pointer_to_segment->get_no_of_vehicles()-1];
+                        pointer_to_segment->vehicles[pointer_to_segment->get_no_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                        Capacity--;
                         tolls[i]->sub();
                         employe_tolls_limit--;
-                        Capacity--;
                         vehicles_to_enter_counter++;
                     }
                 }
                 else{
                     if(electronic_tolls_limit>0){
+                        pointer_to_segment->vehicles[pointer_to_segment->get_no_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                        Capacity--;
                         tolls[i]->sub();
                         electronic_tolls_limit--;
-                        Capacity--;
                         vehicles_to_enter_counter++;
                     }
                 }
@@ -92,7 +105,7 @@ int entrance::operate(int NSegs, int K, int Capacity){
     }
     
     for(int i=0; i<num_of_tolls; i++) {
-        for(int j=0; j<tolls[i]->num_of_vehicles; j++)
+        for(int j=0; j<tolls[i]->get_num_of_vehicles(); j++)
             num_of_vehicles++;
     }
     return vehicles_to_enter_counter;

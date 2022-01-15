@@ -11,10 +11,10 @@ private:
     bool ready;
 public:
     vehicle(int exit);
-    void set_exit_segment(bool ready_);
-    bool get_exit_segment();
     void set_current_segment(int i);
     bool exit_attica();
+    void set_exit_segment(bool ready_);
+    bool get_exit_segment();
 };
 
 
