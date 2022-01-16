@@ -66,7 +66,7 @@ int entrance::operate(int NSegs, int K, int Capacity){
             if(Capacity>0){
                 if(tolls[i]->get_speed() == K){
                     if(employe_tolls_limit>0){
-                        pointer_to_segment->vehicles[pointer_to_segment->get_no_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                        pointer_to_segment->vehicles[pointer_to_segment->get_no_of_vehicles()-1] = &tolls[i]->get_vehicle();   // na allazo ton ariumo ton oxhmaton
                         Capacity--;
                         tolls[i]->sub();
                         employe_tolls_limit--;
