@@ -7,13 +7,14 @@ class segment;
 
 class attica{
 private:
-   // list <segment> segments;
-    segment** segments;
     int num_of_vehicles;
+    int Kappa;
+    segment** segments;    
 public:
     attica(int NSegs, int K);
-    void operate(int NSegs,int K, int Percent);
     segment* get_segment(int i);
+    void set_K(int K);
+    void operate(int NSegs, int Percent);
 };
 
 

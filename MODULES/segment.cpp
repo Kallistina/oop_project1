@@ -4,12 +4,12 @@ using namespace std;
 #include "../INCLUDES/entrance.h"
 #include "../INCLUDES/vehicle.h" 
 
-segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer) 
+segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node) 
     :  previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0) {
-//seg_entrance(NSegs, K, this),
+
     srand(time(NULL));
 
-    seg_entrance = new entrance(NSegs, K, this);
+    seg_entrance = new entrance(NSegs, K, this, node);
 
     capacity = rand() % 100 + 50;
 
@@ -78,12 +78,21 @@ void segment::pass(int i){
     vehicles[i]=NULL;
 }
 
-int segment::get_no_of_vehicles() {
+int segment::get_num_of_vehicles() {
     return num_of_vehicles;
 }
 
-void segment::operate(int NSegs, int K, int Percent){
+void segment::set_num_of_vehicles(int num) {
+    num_of_vehicles=num;
+}
 
+void segment::set_K(int K) {
+    Kappa=K;
+    pointer_to_attica->set_K(Kappa);
+}
+
+void segment::operate(int NSegs, int K, int Percent){
+//EXIT
     exit();
 
     srand(time(NULL));
@@ -96,7 +105,7 @@ void segment::operate(int NSegs, int K, int Percent){
             counter++;
         }
     }
-
+//PASS
     if(next!=-1) {
         bool flag=false;
         num_of_exit_segment=0;
@@ -130,8 +139,9 @@ void segment::operate(int NSegs, int K, int Percent){
             }
             flag=true;
         }
-
+//ENTER
         int enter_toll_vehicles = enter(NSegs, K);  
+//PRINTS
         bool flag2=false;
         if(enter_toll_vehicles < seg_entrance->get_num_of_vehicles()) {
             cout << "Delays in entrance of node " << seg_entrance->get_node() << endl;

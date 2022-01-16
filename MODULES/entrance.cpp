@@ -6,8 +6,8 @@
 using std::string;
 using namespace std;
 
-entrance::entrance(int NSegs, int K, segment* pointer) 
-    : node(-1), num_of_tolls(0), pointer_to_segment(pointer), num_of_vehicles(0) {
+entrance::entrance(int NSegs, int K, segment* pointer, int node_) 
+    : num_of_tolls(0), pointer_to_segment(pointer), num_of_vehicles(0), node(node_) {
 
     srand(time(NULL));
 
@@ -50,9 +50,9 @@ int entrance::get_node() {
     return node;
 }
 
-void entrance::set_node(int i) {
-    node=i;
-}
+// void entrance::set_node(int i) {
+//     node=i;
+// }
 
 int entrance::operate(int NSegs, int K, int Capacity){
 //sub
@@ -66,8 +66,9 @@ int entrance::operate(int NSegs, int K, int Capacity){
             if(Capacity>0){
                 if(tolls[i]->get_speed() == K){
                     if(employe_tolls_limit>0){
-                        pointer_to_segment->vehicles[pointer_to_segment->get_no_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                        pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1] = &tolls[i]->get_vehicle();
                         Capacity--;
+                        pointer_to_segment->set_num_of_vehicles(pointer_to_segment->get_num_of_vehicles()-1);
                         tolls[i]->sub();
                         employe_tolls_limit--;
                         vehicles_to_enter_counter++;
@@ -75,7 +76,7 @@ int entrance::operate(int NSegs, int K, int Capacity){
                 }
                 else{
                     if(electronic_tolls_limit>0){
-                        pointer_to_segment->vehicles[pointer_to_segment->get_no_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                        pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1] = &tolls[i]->get_vehicle();
                         Capacity--;
                         tolls[i]->sub();
                         electronic_tolls_limit--;
@@ -92,9 +93,11 @@ int entrance::operate(int NSegs, int K, int Capacity){
     else
         K--;
 
-    for(int i=0; i<num_of_tolls; i++)
-        tolls[i]->set_speed(K);
+    
+    pointer_to_segment->set_K(K);
 
+    // for(int i=0; i<num_of_tolls; i++)
+    //     tolls[i]->set_speed(K);
 //add
     srand(time(NULL));
     for(int i=0; i<num_of_tolls; i++) {
@@ -110,26 +113,3 @@ int entrance::operate(int NSegs, int K, int Capacity){
     }
     return vehicles_to_enter_counter;
 }
-
-
-    // for(int i=0; i<5; i++){
-    //     for(int j=0; j<K; j++){
-    //         employe_tolls[i].sub();
-    //     }
-    //      for(int j=0; j<2*K; j++){
-    //         electronic_tolls[i].sub();
-    //     }
-    // }
-
-
-
- // for(int i=0; i<5; i++){
-    //     for(int j=0; j<rand() % 20; j++){
-    //         vehicle v(rand() % NSegs);
-    //         employe_tolls[i].add(&v);
-    //     }
-    //     for(int j=0; j<rand() % 20; j++){
-    //         vehicle v(rand() % NSegs);
-    //         electronic_tolls[i].add(&v);
-    //     }
-    // }

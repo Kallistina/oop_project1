@@ -12,18 +12,21 @@ class entrance;
 
 class segment {
 private:
+    int num_of_vehicles;
     int capacity;
     int previous;
     int next;
     attica* pointer_to_attica;
-    int num_of_vehicles;
+    entrance* seg_entrance;
+    int Kappa;
 public:
     vehicle** vehicles;
-    entrance* seg_entrance;
-    segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer);
+    segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node);
     int enter(int NSegs, int K);
     void exit();
     void pass(int i);
-    int get_no_of_vehicles();
+    int get_num_of_vehicles();
+    void set_num_of_vehicles(int num);
+    void set_K(int K);
     void operate(int NSegs, int K, int Percent);
 };

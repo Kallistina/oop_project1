@@ -18,9 +18,9 @@ private:
     toll** tolls;  
     segment* pointer_to_segment;
 public:  
-    entrance(int NSegs, int K, segment* pointer);
+    entrance(int NSegs, int K, segment* pointer, int node_);
     int get_num_of_vehicles();
     int get_node();
-    void set_node(int i);
+   // void set_node(int i);
     int operate(int NSegs, int K, int Capacity);
 };
