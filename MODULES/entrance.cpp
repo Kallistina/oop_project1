@@ -67,6 +67,7 @@ int entrance::operate(int NSegs, int K, int Capacity){
                 if(tolls[i]->get_speed() == K){
                     if(employe_tolls_limit>0){
                         pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                        pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1]->set_exit_segment(false);
                         Capacity--;
                         pointer_to_segment->set_num_of_vehicles(pointer_to_segment->get_num_of_vehicles()-1);
                         tolls[i]->sub();
@@ -77,7 +78,9 @@ int entrance::operate(int NSegs, int K, int Capacity){
                 else{
                     if(electronic_tolls_limit>0){
                         pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                        pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1]->set_exit_segment(false);
                         Capacity--;
+                        pointer_to_segment->set_num_of_vehicles(pointer_to_segment->get_num_of_vehicles()-1);
                         tolls[i]->sub();
                         electronic_tolls_limit--;
                         vehicles_to_enter_counter++;
