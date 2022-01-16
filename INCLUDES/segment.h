@@ -29,4 +29,5 @@ public:
     void set_num_of_vehicles(int num);
     void set_K(int K);
     void operate(int NSegs, int K, int Percent);
+    
 };
