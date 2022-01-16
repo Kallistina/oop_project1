@@ -50,10 +50,6 @@ int entrance::get_node() {
     return node;
 }
 
-// void entrance::set_node(int i) {
-//     node=i;
-// }
-
 int entrance::operate(int NSegs, int K, int Capacity){
 //sub
     int vehicles_to_enter_counter=0;
@@ -96,11 +92,8 @@ int entrance::operate(int NSegs, int K, int Capacity){
     else
         K--;
 
-    
     pointer_to_segment->set_K(K);
 
-    // for(int i=0; i<num_of_tolls; i++)
-    //     tolls[i]->set_speed(K);
 //add
     srand(time(NULL));
     for(int i=0; i<num_of_tolls; i++) {

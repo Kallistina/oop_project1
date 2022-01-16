@@ -6,6 +6,7 @@
 #include "vehicle.h"
 
 using namespace std;
+using namespace std;
 
 class attica;
 class entrance;

@@ -6,7 +6,7 @@
 using std::string;
 using namespace std;
 
-
+/////////////////////////////// TOLL ///////////////////////////////////
 toll::toll(int NSegs, int K) : num_of_vehicles(0), speed(K) {
 
     srand(time(NULL));
@@ -39,6 +39,7 @@ int toll::get_speed(){
     return speed;
 }
 
+/////////////////////////////// EMPLOYE TOLL ///////////////////////////////////
 employe_toll::employe_toll(int NSegs, int K) : toll(NSegs, K)  {
 }
 
@@ -46,6 +47,7 @@ void employe_toll::set_speed(int K){
     speed = K;
 }
 
+/////////////////////////////// ELECTRONIC TOLL ///////////////////////////////////
 electronic_toll::electronic_toll(int NSegs, int K) : toll(NSegs, K) {
 }
 

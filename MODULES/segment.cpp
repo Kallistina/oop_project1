@@ -4,6 +4,7 @@
 #include "../INCLUDES/vehicle.h" 
 
 using namespace std;
+using namespace std;
 
 segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node) 
     :  previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0) {
@@ -61,18 +62,14 @@ void segment::pass(int i){
     int next_segment_num_of_vehicles = pointer_to_attica->get_segment(next)->num_of_vehicles;
     vehicles[i]->set_exit_segment(false);
     pointer_to_attica->get_segment(next)->vehicles[next_segment_num_of_vehicles-1] = vehicles[i];
-   // next_segment_num_of_vehicles++;
     pointer_to_attica->get_segment(next)->set_num_of_vehicles(next_segment_num_of_vehicles+1);
     vehicles[i]=NULL;
 }
-
-
 
 void segment::operate(int NSegs, int K, int Percent){
 //EXIT
     if(previous!=-1)
         exit();
-
 //PASS
     srand(time(NULL));
     int num_of_exit_segment = Percent*num_of_vehicles/100;

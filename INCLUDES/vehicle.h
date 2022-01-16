@@ -16,7 +16,3 @@ public:
     void set_exit_segment(bool ready_);
     bool get_exit_segment();
 };
-
-
-//feygei apo to tmhma --- flase !!
-// synarthsh gia to K

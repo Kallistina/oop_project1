@@ -3,6 +3,9 @@
 #include <list>
 #include "segment.h"
 
+using namespace std;
+using namespace std;
+
 class segment;
 
 class attica{
