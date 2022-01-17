@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "../INCLUDES/vehicle.h"
 
 using std::string;

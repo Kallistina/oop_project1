@@ -25,6 +25,8 @@ public:
     segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node);
     int get_num_of_vehicles();
     void set_num_of_vehicles(int num);
+    int get_capacity();
+    void set_capacity(int cap);
     void set_K(int K);
     int enter(int NSegs);
     void exit();

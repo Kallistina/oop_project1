@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <queue>
 #include "../INCLUDES/toll.h"
 #include "../INCLUDES/vehicle.h"
@@ -8,9 +10,9 @@ using namespace std;
 
 /////////////////////////////// TOLL ///////////////////////////////////
 toll::toll(int NSegs, int K) : num_of_vehicles(0), speed(K) {
-
+    //set_speed(K);
     srand(time(NULL));
-    num_of_vehicles=rand() % 20;
+    num_of_vehicles=rand() % 3 + 1;
 
 //create rand vehicles for toll initialization
     for(int i=0; i<num_of_vehicles; i++){
@@ -41,6 +43,7 @@ int toll::get_speed(){
 
 /////////////////////////////// EMPLOYE TOLL ///////////////////////////////////
 employe_toll::employe_toll(int NSegs, int K) : toll(NSegs, K)  {
+    set_speed(K);
 }
 
 void employe_toll::set_speed(int K){
@@ -49,6 +52,7 @@ void employe_toll::set_speed(int K){
 
 /////////////////////////////// ELECTRONIC TOLL ///////////////////////////////////
 electronic_toll::electronic_toll(int NSegs, int K) : toll(NSegs, K) {
+    set_speed(K);
 }
 
 void electronic_toll::set_speed(int K){

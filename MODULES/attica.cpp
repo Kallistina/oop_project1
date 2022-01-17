@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <list>
 #include "../INCLUDES/attica.h"
 #include "../INCLUDES/entrance.h"
@@ -35,7 +37,8 @@ void attica::set_K(int K) {
 }
 
 void attica::operate(int NSegs, int Percent) {
-    for(int i=NSegs; i>0; i--) {
+    for(int i=NSegs-1; i>=0; i--) {
+           cout << i << endl;
         segments[i]->operate(NSegs, Kappa, Percent);
         num_of_vehicles += segments[i]->get_num_of_vehicles();
         cout << "Number of Attica Highway vehicles: " << num_of_vehicles << endl;

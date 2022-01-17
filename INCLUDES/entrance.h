@@ -22,5 +22,5 @@ public:
     int get_num_of_vehicles();
     int get_node();
    // void set_node(int i);
-    int operate(int NSegs, int K, int Capacity);
+    int operate(int NSegs, int K);
 };

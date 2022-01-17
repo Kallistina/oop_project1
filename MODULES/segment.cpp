@@ -1,25 +1,31 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "../INCLUDES/segment.h"
 #include "../INCLUDES/entrance.h"
 #include "../INCLUDES/vehicle.h" 
 
 using namespace std;
-using namespace std;
 
 segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node) 
-    :  previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0) {
+    :  previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0), Kappa(K) {
 
     srand(time(NULL));
 
     seg_entrance = new entrance(NSegs, K, this, node);
 
+    // cout << "Give capacity for " << seg_entrance->get_node() << " segment" << endl;
+    // cin >> capacity ;
+
     capacity = rand() % 100 + 50;
 
-    int rand_num_of_vehicles = rand() % 20 + 1;
-    vehicles = new vehicle*[rand_num_of_vehicles];
+    int num_of_vehicles = rand() % 20 + 1;
 
-    for (int i=0; i<rand_num_of_vehicles; i++){
+    vehicles = new vehicle*[num_of_vehicles];
+
+    for (int i=0; i<num_of_vehicles; i++){
         vehicles[i] = new vehicle(rand() % NSegs + 1);
+        vehicles[i]->set_exit_segment(node);        
     }
 }
 
@@ -36,14 +42,22 @@ void segment::set_K(int K) {
     pointer_to_attica->set_K(Kappa);
 }
 
-int segment::enter(int NSegs){
-    return seg_entrance->operate(NSegs, Kappa, capacity);
+
+
+int segment::get_capacity() {
+    return capacity;
 }
 
- 
+void segment::set_capacity(int cap) {
+    capacity=cap;
+}
+
+int segment::enter(int NSegs){
+    return seg_entrance->operate(NSegs, Kappa);
+} 
 void segment::exit(){
     int copy_pointer=0;
-    for(int i=0; i<num_of_vehicles; i++){
+    for(int i=1; i<num_of_vehicles; i++){
         if(vehicles[i]->exit_attica()) {
             num_of_vehicles--;
             vehicles[i]=NULL;
@@ -68,8 +82,10 @@ void segment::pass(int i){
 
 void segment::operate(int NSegs, int K, int Percent){
 //EXIT
-    if(previous!=-1)
+    if(previous!=-1){
         exit();
+    }
+        
 //PASS
     srand(time(NULL));
     int num_of_exit_segment = Percent*num_of_vehicles/100;
@@ -86,13 +102,16 @@ void segment::operate(int NSegs, int K, int Percent){
         bool flag=false;
         num_of_exit_segment=0;
         for(int i=0; i<num_of_vehicles; i++){
-            if(vehicles[i]->get_exit_segment()==true)
-                num_of_exit_segment++;
+            if(vehicles[i]->get_exit_segment()==true){
+                  num_of_exit_segment++;
+            } 
         }
         if(pointer_to_attica->get_segment(next)->capacity >= num_of_exit_segment){
-            for(int i=0; i<num_of_vehicles; i++)
-                if(vehicles[i]->get_exit_segment()==true)
+            for(int i=0; i<num_of_vehicles; i++){
+                if(vehicles[i]->get_exit_segment()==true){
                     pass(i);
+                }
+            }    
         }
         else{
             int num_of_exit_vehicles = num_of_exit_segment - pointer_to_attica->get_segment(next)->capacity;
@@ -120,12 +139,13 @@ void segment::operate(int NSegs, int K, int Percent){
         int enter_toll_vehicles= enter(NSegs);
 //PRINTS
         bool flag2=false;
+       // cout << "toll" << enter_toll_vehicles << "entr ve" << seg_entrance->get_num_of_vehicles() << endl;
         if(enter_toll_vehicles < seg_entrance->get_num_of_vehicles()) {
             cout << "Delays in entrance of node " << seg_entrance->get_node() << endl;
             flag2=true;
         } 
         if(flag) 
-            cout << "Delays after the node " << seg_entrance->get_node()<< endl;
+           cout << "Delays after the node " << seg_entrance->get_node()<< endl;
         if(flag==false && flag2==false)
             cout << "Keep a safe distance in the segment after the node " << seg_entrance->get_node() << endl;
     }    

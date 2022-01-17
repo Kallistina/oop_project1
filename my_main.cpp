@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "INCLUDES/attica.h"
 #include "INCLUDES/entrance.h"
 #include "INCLUDES/segment.h"
