@@ -10,8 +10,6 @@ int random (int low, int high);
 entrance::entrance(int NSegs, int K, segment* pointer, int node_) 
     : num_of_tolls(0), pointer_to_segment(pointer), num_of_vehicles(0), node(node_) {
 
-    //srand(time(NULL));
-
     int rand_num_of_employe_tolls =  rand() % 5;
     int rand_num_of_electronic_tolls = rand() % 5;
     num_of_tolls = rand_num_of_employe_tolls + rand_num_of_electronic_tolls;

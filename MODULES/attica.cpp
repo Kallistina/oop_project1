@@ -9,7 +9,7 @@ using namespace std;
 attica::attica(const int NSegs, int K) : num_of_vehicles(0), Kappa(K) {
     cout << "Attica Highway is in operation !!!" << endl;
 
-   segments = new segment*[NSegs];
+    segments = new segment*[NSegs];
 
     for(int i=0; i<NSegs; i++){
         if(i==0)

@@ -9,8 +9,6 @@ int random (int low, int high);
 segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node) 
     :  previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0), Kappa(K) {
 
-    srand(time(NULL));
-
     seg_entrance = new entrance(NSegs, K, this, node);
 
     cout << "Give capacity for segment " << seg_entrance->get_node() << endl;
