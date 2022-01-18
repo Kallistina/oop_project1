@@ -12,8 +12,8 @@ entrance::entrance(int NSegs, int K, segment* pointer, int node_)
 
     //srand(time(NULL));
 
-    int rand_num_of_employe_tolls =  rand() % 5 + 1;
-    int rand_num_of_electronic_tolls = rand() % 5 + 1;
+    int rand_num_of_employe_tolls =  rand() % 5;
+    int rand_num_of_electronic_tolls = rand() % 5;
     num_of_tolls = rand_num_of_employe_tolls + rand_num_of_electronic_tolls;
     
     tolls = new toll*[num_of_tolls] ;
@@ -54,8 +54,10 @@ int entrance::operate(int NSegs, int K){
         for(int i=0; i<num_of_tolls; i++) {
             if(pointer_to_segment->get_capacity()>0){
                 if(tolls[i]->get_speed() == K && employe_tolls_limit>0) {
-                    pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1] = &tolls[i]->get_vehicle();
-                    pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1]->set_exit_segment(false);
+                    // pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                    // pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1]->set_exit_segment(false);
+                    pointer_to_segment->get_vehicle(pointer_to_segment->get_num_of_vehicles()-1) = tolls[i]->get_vehicle();
+                    pointer_to_segment->get_vehicle(pointer_to_segment->get_num_of_vehicles()-1).set_exit_segment(false);
                     pointer_to_segment->set_capacity(pointer_to_segment->get_capacity()-1);
                     pointer_to_segment->set_num_of_vehicles(pointer_to_segment->get_num_of_vehicles()+1);
                     tolls[i]->sub();
@@ -64,8 +66,10 @@ int entrance::operate(int NSegs, int K){
                     vehicles_to_enter_counter++;
                 }
                 else if(electronic_tolls_limit>0) {
-                    pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1] = &tolls[i]->get_vehicle();
-                    pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1]->set_exit_segment(false);
+                    // pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1] = &tolls[i]->get_vehicle();
+                    // pointer_to_segment->vehicles[pointer_to_segment->get_num_of_vehicles()-1]->set_exit_segment(false);
+                    pointer_to_segment->get_vehicle(pointer_to_segment->get_num_of_vehicles()-1) = tolls[i]->get_vehicle();
+                    pointer_to_segment->get_vehicle(pointer_to_segment->get_num_of_vehicles()-1).set_exit_segment(false);
                     pointer_to_segment->set_capacity(pointer_to_segment->get_capacity()-1);
                     pointer_to_segment->set_num_of_vehicles(pointer_to_segment->get_num_of_vehicles()+1);
                     tolls[i]->sub();
@@ -78,7 +82,7 @@ int entrance::operate(int NSegs, int K){
         }
     }
 
-    if(employe_tolls_limit==0 && employe_tolls_limit==0) 
+    if(employe_tolls_limit==0 && electronic_tolls_limit==0) 
         K++;
     else
         K--;

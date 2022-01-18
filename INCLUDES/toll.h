@@ -17,8 +17,8 @@ protected:
 public:
     toll(int NSegs, int K, int Segment_i);
     int get_num_of_vehicles();
-    int get_speed();
     vehicle& get_vehicle();
+    int get_speed();
     virtual void set_speed(int K)=0;
     void add(vehicle v);
     void sub();

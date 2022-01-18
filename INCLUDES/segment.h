@@ -15,17 +15,20 @@ private:
     int capacity;
     int previous;
     int next;
+    int Kappa;
     attica* pointer_to_attica;
     entrance* seg_entrance;
-    int Kappa;
-public:
     vehicle** vehicles;
+public:
     segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node);
     int enter(int NSegs);
     void exit();
     void pass(int i);
     void operate(int NSegs, int K, int Percent);
     void set_K(int K);
+
+    vehicle get_vehicle(int i) { return *vehicles[i];}
+
     int get_num_of_vehicles() { return num_of_vehicles; }
 
     void set_num_of_vehicles(int num) {  num_of_vehicles=num; }
