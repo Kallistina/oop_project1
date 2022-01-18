@@ -6,6 +6,12 @@
 using std::string;
 using namespace std;
 
+int random (int low, int high) {
+    if (low > high)
+        return high;
+    return low + (rand() % (high - low ));
+}
+
 vehicle::vehicle(int exit) : exit_node(exit), current_segment(-1), ready(false) {   
 }
 

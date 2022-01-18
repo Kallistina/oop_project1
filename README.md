@@ -1,17 +1,16 @@
 OMAΔIKO PROJECT
 
-Ονοματεπώνυμο:  Ευαγγελία Γούλα  sdi2000040
+Ονοματεπώνυμα:  Ευαγγελία Γούλα  sdi2000040
                 Καλλιόπη - Χριστίνα Δεσποτίδου sdi2000045
 
 compile:
-
      g++ -o run my_main.cpp MODULES/vehicle.cpp MODULES/toll.cpp MODULES/entrance.cpp MODULES/segment.cpp MODULES/attica.cpp                
 
 Καλησπέρα! Θα προσπαθήσουμε να εξηγήσουμε πώς ακριβώς υλοποιήσαμε την Εργασία του μαθήματος για γίνει όλος ο κώδικας κατανοητός. :)
 
 Ας ξεκινήσουμε από τη main...
 
-                                        ---my_main---
+                                          ---my_main---
 --->Η main δέχεται από τη γραμμή εντολών τον αριθμό των κύκλων προσομοίωσης, τον αριθμό των τμημάτων την Αττικής οδού, τον μέγιστο αριθμό οχημάτων που μπορούν να εισέλθουν σε ένα τμήμα του 
 αυτοκινητοδρόμου από κάποιο διόδιο με εισπράκτορα και το ποσοστό των οχημάτων σ΄ ένα τμήμα που μεταβαίνει σε κατάσταση “ετοιμότητας” για έξοδο από το τμήμα στην επόμενη κατάσταση.
 Στη συνέχεια δημιουργεί μια Attica και της περνάει τα κατάλληλα ορίσματα.
@@ -40,7 +39,7 @@ compile:
 Η συνάρτηση get_speed είναι pure virlual καθώς η υλοποίησή της διαφέρει ανάλογα με το αν το διόδιο είναι με εισπράκτορα ή ηλεκτρονικό.
 
 
-                                        ---class employe_toll και electronic_toll---
+                                ---class employe_toll και electronic_toll---
 --->Κληρονομούν την κλάση toll. Οι constructor τους γίνονται μέσω του constructor της υπερκλάσης.
 Η set_speed ενημερώνει την ταχύτητα με Κ στην employe_toll και με 2Κ στην electronic_toll.
 
@@ -101,3 +100,143 @@ rand_num_of_vehicles οχήματα. Στη συνέχεια δημιουργο�
 Στη μέθοδο get_segment δεχόμαστε τη θέση του πίνακα στην οποία είναι το τμήμα που ψάχνουμε και επιστρέφουμε αυτό το τμήμα.
 Στη μέθοδο set_K ενημερώνουμε το Κ.
 Στη μέθοδο operate προσπελαύνουμε τα τμήματα από το τελευταίο στο αρχικό. Καλούμε την operate κάθε τμήματος με ενημερωμένο το Κ και αυξάνουμε. Τυπώνεται το πλήθος των οχημάτων.
+
+
+
+// int segment::get_num_of_vehicles() {
+//     return num_of_vehicles;
+// }
+
+// void segment::set_num_of_vehicles(int num) {
+//     num_of_vehicles=num;
+// }
+
+// void segment::set_K(int K) {
+//     Kappa=K;
+//     pointer_to_attica->set_K(Kappa);
+// }
+
+// int segment::get_capacity() {
+//     return capacity;
+// }
+
+// void segment::set_capacity(int cap) {
+//     capacity=cap;
+// }
+
+
+
+
+int entrance::get_num_of_vehicles() {
+    return num_of_vehicles;
+}
+
+int entrance::get_node() {
+    return node;
+}
+
+
+
+    // int num_of_readys = Percent*num_of_vehicles/100;
+    // for (int i=0; i<num_of_readys && i<num_of_vehicles; i++){
+    //     vehicles[i]->exit_attica();
+    //     // vehicles[i]->  get_destination
+    // }  
+
+                    // vehicle** help_array;
+                // int help=0;
+                // help_array = new vehicle*[num_of_vehicles];
+                // for(int i=0; i<capacity; i++) {
+                //     if(vehicles[i]!=NULL) {
+                //         help_array[help] = vehicles[i];
+                //         vehicles[i] == NULL;
+                //         help++;
+                //     }
+                // }
+                // for(int i=0; i<help; i++)
+                //     vehicles[i] = help_array[i];
+
+
+//ENTERRRRRRRRRRRRRRRR
+
+    // if (previous != -1) {
+    //     int previous_segment_vehicles = pointer_to_attica->get_segment(previous)->num_of_vehicles;
+
+    //     for(int i=0; i<previous_segment_vehicles; i++){
+    //         if (num_of_vehicles<capacity){
+
+    //          //tsekare mhpos einai null logv exit
+    //             vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->vehicles[i];
+    //             num_of_vehicles++;
+    //         }
+    //         else break;
+    //     }
+    // }
+    // if(num_of_vehicles<capacity) 
+    //     num_of_vehicles += seg_entrance.operate(NSegs, K, capacity);
+
+
+
+        // while(num_of_vehicles<capacity) {
+    //     vehicle* toll_vehicle = seg_entrance.operate(NSegs, K, capacity);
+    //     if(toll_vehicle!=NULL) {
+    //         vehicles[num_of_vehicles-1] = toll_vehicle;
+    //         num_of_vehicles++;
+    //         capacity--;
+    //     }
+    // }
+
+
+//PASSSSSSSSSSSSSSSSSSSSS
+
+    // for (int i=0; i<num_of_vehicles; i++){
+    //     if (vehicles[num_of_vehicles-i]->ready_to_go()){
+    //         int next_segment_capacity = pointer_to_attica->get_segment(next)->capacity;
+    //         if (next_segment_capacity>0){
+    //             //next has to be array, not an int
+    //             //next->vehicles[next->num_of_vehicles]=vehicles[i];
+    //             vehicles[i]=NULL;
+    //             // next->num_of_vehicles++;
+    //             next_segment_capacity--;
+    //             num_of_vehicles--;
+    //         }
+                
+    //     }
+    //     // else{
+    //     //     vehicles[k]=vehicles[i];
+    //     //     k++;
+    //     //     vehicles[i]=NULL;
+    //     // }
+    // } 
+    
+    
+//ENTERRRR
+    
+    
+    
+       // if (previous != -1) {
+    
+        // int previous_segment_capacity = pointer_to_attica->get_segment(previous)->capacity;
+
+        // for(int i=0; i<previous_segment_capacity; i++){
+        //     vehicle* current_vehicle =pointer_to_attica->get_segment(previous)->vehicles[i];
+        //     if (num_of_vehicles<capacity){
+        //         if(current_vehicle!=NULL){
+        //             for(int j=0; j<capacity; j++){
+        //                 if(vehicles[j] == NULL) {
+        //                     vehicles[j] = current_vehicle;
+        //                     num_of_vehicles++;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     else break;
+        // }
+    // }
+
+    // int enter_toll_vehicles=num_of_vehicles;
+    // seg_entrance->operate(NSegs, Kappa, capacity);
+    // if(num_of_vehicles<capacity) {
+    //     enter_toll_vehicles = seg_entrance->operate(NSegs, Kappa, capacity);
+    //     num_of_vehicles += enter_toll_vehicles;
+    // }

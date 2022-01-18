@@ -2,10 +2,6 @@
 #include <cstdlib>
 #include <ctime>
 #include "INCLUDES/attica.h"
-#include "INCLUDES/entrance.h"
-#include "INCLUDES/segment.h"
-#include "INCLUDES/toll.h"
-#include "INCLUDES/vehicle.h"
 
 using std::string;
 using namespace std;

@@ -15,23 +15,23 @@ protected:
     int num_of_vehicles;
     int speed;
 public:
-    toll(int NSegs, int K);
+    toll(int NSegs, int K, int Segment_i);
     int get_num_of_vehicles();
+    int get_speed();
+    vehicle& get_vehicle();
+    virtual void set_speed(int K)=0;
     void add(vehicle v);
     void sub();
-    vehicle& get_vehicle();
-    int get_speed();
-    virtual void set_speed(int K)=0;
 };
 
 class employe_toll : public toll {
 public:  
-    employe_toll(int NSegs, int K);
+    employe_toll(int NSegs, int K, int Segment_i);
     void set_speed(int K);
 };
 
 class electronic_toll : public toll {
 public:
-    electronic_toll(int NSegs, int K);
+    electronic_toll(int NSegs, int K, int Segment_i);
     void set_speed(int K);
 };
