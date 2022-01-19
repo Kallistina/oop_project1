@@ -7,7 +7,6 @@ using std::string;
 using namespace std;
 
 int main(int argc, char* argv[]) {
-
     srand(time(NULL));
 
     int  N, NSegs, K, Percent;
@@ -20,5 +19,4 @@ int main(int argc, char* argv[]) {
 
     for(int i=0; i<N; i++)
         my_attica.operate(NSegs, Percent);
-
 }

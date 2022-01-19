@@ -10,7 +10,6 @@ int random (int low, int high);
 /////////////////////////////// TOLL ///////////////////////////////////
 toll::toll(int NSegs, int K, int Segment_i) : num_of_vehicles(0), speed(K) {
 
-    srand(time(NULL));
     num_of_vehicles=rand() % 3 + 1;
 
 //create rand vehicles for toll initialization

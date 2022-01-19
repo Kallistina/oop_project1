@@ -29,6 +29,8 @@ public:
 
     vehicle get_vehicle(int i) { return *vehicles[i];}
 
+    void set_vehicle(int i, vehicle veh ) { vehicles[i] = &veh;}
+
     int get_num_of_vehicles() { return num_of_vehicles; }
 
     void set_num_of_vehicles(int num) {  num_of_vehicles=num; }
