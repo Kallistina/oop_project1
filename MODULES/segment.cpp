@@ -47,6 +47,7 @@ void segment::exit(){
             }
             copy_pointer++; 
         }
+                cout << "gggggg2" << endl;
     }
     num_of_vehicles -= counter;
 }
@@ -54,8 +55,6 @@ void segment::exit(){
 void segment::pass(int i){
     int next_segment_num_of_vehicles = pointer_to_attica->get_segment(next)->num_of_vehicles;
     vehicles[i]->set_exit_segment(false);
-    //pointer_to_attica->get_segment(next)->vehicles[next_segment_num_of_vehicles-1] = vehicles[i];
-    //pointer_to_attica->get_segment(next)->get_vehicle(next_segment_num_of_vehicles-1) = *vehicles[i];
     pointer_to_attica->get_segment(next)->set_vehicle(next_segment_num_of_vehicles-1, *vehicles[i]);
     pointer_to_attica->get_segment(next)->set_num_of_vehicles(next_segment_num_of_vehicles+1);
     vehicles[i]=NULL;
@@ -65,6 +64,7 @@ void segment::pass(int i){
 void segment::operate(int NSegs, int K, int Percent){
 //EXIT
     exit();
+            cout << "ggggg1" << endl;
 
 //PASS 
     bool flag=false;
@@ -109,8 +109,7 @@ void segment::operate(int NSegs, int K, int Percent){
                     }
                 }
             }
-        }
-        
+        }  
     }
 
 //ENTER

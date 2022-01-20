@@ -141,4 +141,19 @@ segment. Αν αυτός ο αριθμός είναι μικρότερος ή ί
 
 Τιμές παραμέτρων - ΔΟΚΙΜΕΣ:
 
-1) 
+1)  ./run 1 3 4 20
+
+Attica Highway is in operation !!!
+Give capacity for segment 0
+20
+Give capacity for segment 1
+15
+Give capacity for segment 2
+30
+Delays in entrance of node 2
+Number of vehicles in Segment 2 : 10
+Delays in entrance of node 1
+Number of vehicles in Segment 1 : 12
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 14
+Number of vehicles in Attica Highway : 43

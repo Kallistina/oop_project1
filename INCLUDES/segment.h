@@ -27,9 +27,9 @@ public:
     void operate(int NSegs, int K, int Percent);
     void set_K(int K);
 
-    vehicle get_vehicle(int i) { return *vehicles[i];}
+    vehicle get_vehicle(int i) { return *vehicles[i]; }
 
-    void set_vehicle(int i, vehicle veh ) { vehicles[i] = &veh;}
+    void set_vehicle(int i, vehicle veh ) { vehicles[i] = &veh; }
 
     int get_num_of_vehicles() { return num_of_vehicles; }
 
