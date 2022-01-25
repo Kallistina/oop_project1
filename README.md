@@ -157,3 +157,7 @@ Number of vehicles in Segment 1 : 12
 Keep a safe distance in the segment after the node 0
 Number of vehicles in Segment 0 : 14
 Number of vehicles in Attica Highway : 43
+
+
+
+
