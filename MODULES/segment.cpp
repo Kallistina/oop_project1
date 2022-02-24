@@ -58,11 +58,11 @@ void segment::exit(){
     }
 
     for(int i=0; i<num_of_vehicles; i++) {
-        cout << "ee seg " << endl;
-        cout << num_of_vehicles << endl;
-        cout << vehicles[i]->get_exit_segment() << endl;
+        //cout << "ee seg " << endl;
+       // cout << num_of_vehicles << endl;
+       // cout << vehicles[i]->get_exit_segment() << endl;
     }
-    cout << "ee seg sig " <<num_of_vehicles  << endl;
+    //cout << "ee seg sig " <<num_of_vehicles  << endl;
 }
 
 bool segment::pass(int Percent){
@@ -150,12 +150,15 @@ bool segment::pass(int Percent){
 void segment::operate(int NSegs, int K, int Percent){
 //EXIT
     exit();
+     cout << "ee seg sig eet" <<num_of_vehicles  << endl;
 
 //PASS 
     bool flag = pass(Percent);
+     cout << "ee seg sig pass" <<num_of_vehicles  << endl;
 
 //ENTER
     int enter_toll_vehicles= enter(NSegs);  
+     cout << "ee seg sig entr" <<num_of_vehicles  << endl;
 
 //PRINTS
     bool flag2=false;

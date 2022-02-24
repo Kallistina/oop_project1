@@ -48,7 +48,18 @@ int entrance::operate(int NSegs, int K){
     int employe_tolls_limit = K;
     int electronic_tolls_limit = 2*K;
 
-    while (num_of_vehicles>0 && pointer_to_segment->get_capacity() - pointer_to_segment->get_num_of_vehicles() >0 && (employe_tolls_limit>0 || electronic_tolls_limit>0)) {
+    if(num_of_vehicles==0) {
+        //add rand vehicles in entrance's tolls
+        for(int i=0; i<num_of_tolls; i++) 
+            for(int j=0; j<rand() % 3 + 1; j++){
+                vehicle v(random(node, NSegs));
+                v.set_current_segment(node);
+                tolls[i]->add(v);
+                num_of_vehicles++;
+        }
+    }
+
+    while (pointer_to_segment->get_capacity() - pointer_to_segment->get_num_of_vehicles() > 0 && (employe_tolls_limit>0 || electronic_tolls_limit>0)) {
         for(int i=0; i<num_of_tolls; i++) {
             if( pointer_to_segment->get_capacity() - pointer_to_segment->get_num_of_vehicles() > 0 ) {
                 if ( (tolls[i]->get_speed() == K && employe_tolls_limit>0) ||  (tolls[i]->get_speed() == 2*K && electronic_tolls_limit>0) ) {
@@ -64,6 +75,16 @@ int entrance::operate(int NSegs, int K){
                 }
             }
             else break;
+        }
+        if(num_of_vehicles==0) {
+        //add rand vehicles in entrance's tolls
+        for(int i=0; i<num_of_tolls; i++) 
+            for(int j=0; j<rand() % 3 + 1; j++){
+                vehicle v(random(node, NSegs));
+                v.set_current_segment(node);
+                tolls[i]->add(v);
+                num_of_vehicles++;
+            }
         }
     }
 //it's K time
