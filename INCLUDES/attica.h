@@ -16,4 +16,5 @@ public:
     void operate(int NSegs, int Percent);
     segment* get_segment(int i) { return segments[i]; }
     void set_K(int K) { Kappa=K; }
+    void set_vehicles(int i) { num_of_vehicles += i; }
 };

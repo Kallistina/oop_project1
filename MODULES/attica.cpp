@@ -26,7 +26,6 @@ attica::attica(const int NSegs, int K) : num_of_vehicles(0), Kappa(K) {
 void attica::operate(int NSegs, int Percent) {
     for(int i=NSegs-1; i>=0; i--) {
         segments[i]->operate(NSegs, Kappa, Percent);
-        num_of_vehicles += segments[i]->get_num_of_vehicles();
         cout << "Number of vehicles in Segment " << i << " : " << segments[i]->get_num_of_vehicles() << endl;
     }
     cout << "Number of vehicles in Attica Highway : " << num_of_vehicles << endl;

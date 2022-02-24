@@ -22,19 +22,13 @@ public:
     segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node);
     int enter(int NSegs);
     void exit();
-    void pass(int i);
+    bool pass(int Percent);
     void operate(int NSegs, int K, int Percent);
     void set_K(int K);
-
     vehicle get_vehicle(int i) { return *vehicles[i]; }
-
-    void set_vehicle(int i, vehicle veh ) { vehicles[i] = &veh; }
-
+    void set_vehicle(int i, vehicle* veh ) { vehicles[i] = veh; }
     int get_num_of_vehicles() { return num_of_vehicles; }
-
     void set_num_of_vehicles(int num) {  num_of_vehicles=num; }
-
     int get_capacity() { return capacity; }
-
     void set_capacity(int cap) { capacity=cap; }
 };

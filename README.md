@@ -161,3 +161,320 @@ Number of vehicles in Attica Highway : 43
 
 
 
+
+
+    //
+    // int prev_seg_veh=pointer_to_attica->get_segment(previous)->num_of_vehicles;
+    // if(previous!=-1 && prev_seg_veh!=0) {
+    //     int num_of_pass_segment = Percent*prev_seg_veh/100 ;
+    //     int counter=0;
+        
+    //     while (counter!=num_of_pass_segment) {
+    //         int rand_i = rand() % prev_seg_veh ;
+    //          //cout << "RAND I " <<  rand_i << "  NUMMM"  << num_of_vehicles << endl;
+    //         if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).get_exit_segment()== false){
+    //             pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_exit_segment(true);
+    //             counter++;
+    //            // cout << "RAND I !!! " <<  rand_i << "  NUMMM"  << num_of_vehicles << endl;
+    //         }
+    //     }
+
+    //     num_of_pass_segment=0;
+    //     for(int i=0; i<prev_seg_veh; i++) 
+    //         if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment()==true)
+    //             num_of_pass_segment++;
+
+    //     if(capacity >= num_of_pass_segment) {
+    //         for(int i=0; i<prev_seg_veh; i++)
+    //             if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment()==true)
+    //                 pass(i);   
+    //             int copy_pointer=0;
+    //             for(int i=0; i<prev_seg_veh; i++){
+    //                 //cout << "ggggg3" << endl; 
+    //                 if(&pointer_to_attica->get_segment(previous)->get_vehicle(i) != NULL)
+    //                     if(prev_seg_veh==1 || i!=copy_pointer) {
+    //                         pointer_to_attica->get_segment(previous)->get_vehicle(copy_pointer) = pointer_to_attica->get_segment(previous)->get_vehicle(i);
+    //                         pointer_to_attica->get_segment(previous)->get_vehicle(i) = NULL;
+    //                     }
+    //                     copy_pointer++;
+    //             }  
+    //     }
+
+
+
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    
+    // int next_segment_num_of_vehicles = pointer_to_attica->get_segment(next)->num_of_vehicles;
+    // vehicles[i]->set_exit_segment(false);
+    // vehicles[i]->set_current_segment(seg_entrance->get_node()+1);
+    // // delete &pointer_to_attica->get_segment(next)->get_vehicle(next_segment_num_of_vehicles-1);
+    // // pointer_to_attica->get_segment(next)->set_vehicle(next_segment_num_of_vehicles-1, *(new vehicle(*vehicles[i])) );
+    // pointer_to_attica->get_segment(next)->set_vehicle(next_segment_num_of_vehicles, *vehicles[i]);
+    // pointer_to_attica->get_segment(next)->set_num_of_vehicles(next_segment_num_of_vehicles+1);
+    // vehicles[i]=NULL;
+    // num_of_vehicles--;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // if(next!=-1 && num_of_vehicles!=0) {   
+    //     int num_of_pass_segment = Percent*num_of_vehicles/100 ;
+    //     int counter=0;
+        
+    //     while (counter!=num_of_pass_segment) {
+    //         int rand_i = rand() % num_of_vehicles ;
+    //          cout << "RAND I " <<  rand_i << "  NUMMM"  << num_of_vehicles << endl;
+    //         if(vehicles[rand_i]->get_exit_segment() == false){
+    //             vehicles[rand_i]->set_exit_segment(true);
+    //             counter++;
+    //             cout << "RAND I !!! " <<  rand_i << "  NUMMM"  << num_of_vehicles << endl;
+    //         }
+    //     }
+    //      cout << "ggggg5" << endl;
+    //     num_of_pass_segment=0;
+    //     for(int i=0; i<num_of_vehicles; i++) 
+    //         if(vehicles[i]->get_exit_segment()==true)
+    //             num_of_pass_segment++;
+
+    //     if(pointer_to_attica->get_segment(next)->capacity >= num_of_pass_segment) {
+    //         for(int i=0; i<num_of_vehicles; i++)
+    //             if(vehicles[i]->get_exit_segment()==true)
+    //                 pass(i);   
+    //         int copy_pointer=0;
+    //                     for(int i=0; i<num_of_vehicles; i++){
+    //                         cout << "ggggg3" << endl; 
+    //                         if(vehicles[i]!=NULL) {
+    //                             if(num_of_vehicles==1 || i!=copy_pointer) {
+    //                             vehicles[copy_pointer]=vehicles[i];
+    //                             vehicles[i] = NULL; }
+    //                         }
+    //                         copy_pointer++;
+    //                     }  
+    //     }
+    //     else {
+    //         flag=true;
+    //         int num_of_exit_vehicles = num_of_pass_segment - (pointer_to_attica->get_segment(next)->capacity - pointer_to_attica->get_segment(next)->num_of_vehicles);
+    //             cout << "mhpos atrnitikos     " << pointer_to_attica->get_segment(next)->capacity - pointer_to_attica->get_segment(next)->num_of_vehicles << endl;
+    //          cout << "posa num     " << num_of_vehicles << " exit  " << num_of_exit_vehicles << endl;
+    //         while (num_of_exit_vehicles>0 && num_of_vehicles>0) {
+    //             int rand_i = rand() % num_of_vehicles ;
+    //            // cout << "num" << num_of_vehicles << "randd  "<< rand_i << endl;  
+    //             //cout << "gia miso      " << vehicles[rand_i]->get_exit_segment() << endl;
+    //             if(vehicles[rand_i]!=NULL){
+    //                 if(vehicles[rand_i]->get_exit_segment() == true) {
+    //                     cout << "ggggg2.5" << endl;
+    //                     pass(rand_i);
+    //                     cout <<"veh  " << num_of_vehicles << "  exit " << num_of_exit_vehicles << endl; 
+    //                     num_of_exit_vehicles--;
+    //                     int copy_pointer=0;
+    //                     for(int i=0; i<num_of_vehicles; i++){
+    //                         cout << "ggggg3" << endl; 
+    //                         if(vehicles[i]!=NULL)
+    //                             if(num_of_vehicles==1 || i!=copy_pointer) {
+    //                                 delete vehicles[copy_pointer];
+    //                                 vehicles[copy_pointer]= new vehicle(*vehicles[i]);
+    //                                 vehicles[i]=NULL;
+    //                             // vehicles[copy_pointer]=vehicles[i];
+    //                             // vehicles[i] = NULL;
+    //                         }
+    //                         copy_pointer++;
+    //                     }  
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }       
+    // for(int i=0; i<num_of_vehicles; i++){
+                //         cout << "ggggg4" << endl;
+                //         if(vehicles[i]!=NULL){
+                //             if(i!=copy_pointer) {
+                //                 vehicles[copy_pointer]=vehicles[i];
+                //                 vehicles[i] = NULL;
+                //             }
+                                
+                //             copy_pointer++; 
+                //         } 
+               // cout << "ggggg3" << endl;  
+                //if(num_of_vehicles!=0) {
+                 //   cout << "ggggg3.5" << endl;
+                //     int copy_pointer=0;
+                //     for(int i=0; i<num_of_vehicles; i++){
+                //         cout << "ggggg4" << endl;
+                //         if(vehicles[i]!=NULL){
+                //             if(i!=copy_pointer) {
+                //                 vehicles[copy_pointer]=vehicles[i];
+                //                 vehicles[i] = NULL;
+                //             }
+                                
+                //             copy_pointer++; 
+                //         } 
+                //     }
+                // //}
+                   
+                  
+            
+            //  cout << "ggggg3" << endl;  
+            // if(num_of_vehicles!=0) {
+            //      cout << "ggggg3.5" << endl;
+            //     int copy_pointer=0;
+            //     for(int i=0; i<num_of_vehicles; i++){
+            //         cout << "ggggg4" << endl;
+            //         if(vehicles[i]!=NULL){
+            //             if(i!=copy_pointer)
+            //                 vehicles[copy_pointer]=vehicles[i];
+            //             copy_pointer++; 
+            //         }
+                    
+            //     }
+            // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // bool flag=false;
+
+    
+    // int prev_seg_veh=pointer_to_attica->get_segment(previous)->num_of_vehicles;
+    // if(previous!=-1 && prev_seg_veh!=0) {
+    //     int num_of_pass_segment = Percent*prev_seg_veh/100 ;
+    //     int counter=0;
+        
+    //     while (counter!=num_of_pass_segment) {
+    //         int rand_i = rand() % prev_seg_veh ;
+    //         if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).get_exit_segment()== false){
+    //             pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_exit_segment(true);
+    //             counter++;
+              
+    //         }
+    //     }
+
+    //     num_of_pass_segment=0;
+    //     for(int i=0; i<prev_seg_veh; i++) 
+    //         if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment()==true)
+    //             num_of_pass_segment++;
+
+    //     if(capacity >= num_of_pass_segment) {
+    //         for(int i=0; i<prev_seg_veh; i++)
+    //             if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment()==true)
+    //                 pass(i);   
+                
+    //         int copy_pointer=0;
+    //         for(int i=0; i<prev_seg_veh; i++){
+                 
+    //             if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment() != -10) {
+    //                 if(prev_seg_veh==1 || i!=copy_pointer) {
+    //                     pointer_to_attica->get_segment(previous)->get_vehicle(copy_pointer) = pointer_to_attica->get_segment(previous)->get_vehicle(i);
+    //                     pointer_to_attica->get_segment(previous)->get_vehicle(i).set_exit_segment(-10);
+    //                 }
+    //                 copy_pointer++;
+    //             }
+    //         }  
+    //     }
+
+    //     else {
+    //         flag=true;
+    //         int num_of_exit_vehicles = num_of_pass_segment - (capacity - pointer_to_attica->get_segment(previous)->num_of_vehicles);
+
+    //         while (num_of_exit_vehicles>0 && prev_seg_veh>0) {
+    //             int rand_i = rand() % prev_seg_veh ;
+     
+    //             if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).get_exit_segment() != -10){
+    //                 if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).get_exit_segment() == true) {
+    //                     pass(rand_i);
+    //                     num_of_exit_vehicles--;
+    //                     int copy_pointer=0;
+    //                     for(int i=0; i<prev_seg_veh; i++){
+    //                             //cout << "ggggg3" << endl; 
+    //                         if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment() != -10) {
+    //                             if(num_of_vehicles==1 || i!=copy_pointer) {
+    //                                 pointer_to_attica->get_segment(previous)->get_vehicle(copy_pointer) = pointer_to_attica->get_segment(previous)->get_vehicle(i);
+    //                                 pointer_to_attica->get_segment(previous)->get_vehicle(i).set_exit_segment(-10);
+                            
+    //                             }
+    //                             copy_pointer++;
+    //                         }  
+    //                     }  
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+        // pointer_to_attica->get_segment(previous)->get_vehicle(i).set_exit_segment(false);
+    // pointer_to_attica->get_segment(previous)->get_vehicle(i).set_current_segment(seg_entrance->get_node()+1);
+    // pointer_to_attica->get_segment(previous)->set_num_of_vehicles(pointer_to_attica->get_segment(previous)->get_num_of_vehicles()-1);
+    // *vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->get_vehicle(i);
+    // pointer_to_attica->get_segment(previous)->get_vehicle(i).set_exit_segment(-10);
+    // num_of_vehicles++;

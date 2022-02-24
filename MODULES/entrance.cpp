@@ -52,9 +52,8 @@ int entrance::operate(int NSegs, int K){
         for(int i=0; i<num_of_tolls; i++) {
             if( pointer_to_segment->get_capacity() - pointer_to_segment->get_num_of_vehicles() > 0 ) {
                 if ( (tolls[i]->get_speed() == K && employe_tolls_limit>0) ||  (tolls[i]->get_speed() == 2*K && electronic_tolls_limit>0) ) {
-                    pointer_to_segment->set_vehicle(pointer_to_segment->get_num_of_vehicles()-1, tolls[i]->get_vehicle());
+                    pointer_to_segment->set_vehicle(pointer_to_segment->get_num_of_vehicles()-1, &tolls[i]->get_vehicle());
                     pointer_to_segment->get_vehicle(pointer_to_segment->get_num_of_vehicles()-1).set_exit_segment(false);
-                   // pointer_to_segment->set_capacity(pointer_to_segment->get_capacity()-1);
                     pointer_to_segment->set_num_of_vehicles(pointer_to_segment->get_num_of_vehicles()+1);
                     tolls[i]->sub();
                     num_of_vehicles--;
