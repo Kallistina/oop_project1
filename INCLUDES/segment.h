@@ -20,11 +20,13 @@ private:
     vehicle** vehicles;
 public:
     segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node);
+    ~segment();
     int enter(int NSegs);
     void exit();
     bool pass(int Percent);
     void operate(int NSegs, int K, int Percent);
     void set_K(int K);
+    void rebuild();
     vehicle get_vehicle(int i) { return *vehicles[i]; }
     void set_vehicle(int i, vehicle* veh ) { vehicles[i] = veh; }
     int get_num_of_vehicles() { return num_of_vehicles; }

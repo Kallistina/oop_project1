@@ -159,3 +159,74 @@ Number of vehicles in Segment 1 : 12
 Keep a safe distance in the segment after the node 0
 Number of vehicles in Segment 0 : 14
 Number of vehicles in Attica Highway : 43
+
+
+               // pointer_to_attica->get_segment(previous)->set_num_of_vehicles(pointer_to_attica->get_segment(previous)->get_num_of_vehicles()-1);
+                            //*vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->get_vehicle(rand_i);
+                            //pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_exit_segment(-10);
+                           
+                            // int copy_pointer=0;  
+                            // for(int i=0; i<prev_seg_veh; i++){
+                                 
+                            //     if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment() != -10) {
+                            //         if(num_of_vehicles==1 || i!=copy_pointer) {
+                            //             pointer_to_attica->get_segment(previous)->get_vehicle(copy_pointer) = pointer_to_attica->get_segment(previous)->get_vehicle(i);
+                            //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_exit_segment(-10);
+                            
+                            //         }
+                            //         copy_pointer++;
+                            //     }  
+                            // }
+
+
+
+                            
+            // num_of_pass_segment=0;
+            // for(int i=0; i<prev_seg_veh; i++)                                                   // how many vehicles are ready
+            //     if(pointer_to_attica->get_segment(previous)->get_vehicle(i).exit_segment()==true)
+            //         num_of_pass_segment++;
+
+            // if(capacity >= num_of_pass_segment) {   // can we fit them all?
+            //     for(int i=0; i<prev_seg_veh; i++)                                               // pass the vehicles to the segment
+            //         if(pointer_to_attica->get_segment(previous)->get_vehicle(i).exit_segment()==true) {
+            //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_ready(false);
+            //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_ready(seg_entrance->get_node()+1);
+            //             pointer_to_attica->get_segment(previous)->set_num_of_vehicles(pointer_to_attica->get_segment(previous)->get_num_of_vehicles()-1);
+            //             *vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->get_vehicle(i);
+            //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_ready(-10);
+            //             num_of_vehicles++;
+            //         }   
+                
+            //     // int copy_pointer=0;     // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions
+            //     // for(int i=0; i<prev_seg_veh; i++) {
+            //     //     if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment() != -10) {
+            //     //         if(prev_seg_veh==1 || i!=copy_pointer) {
+            //     //             pointer_to_attica->get_segment(previous)->get_vehicle(copy_pointer) = pointer_to_attica->get_segment(previous)->get_vehicle(i);
+            //     //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_exit_segment(-10);
+            //     //         }
+            //     //         copy_pointer++;
+            //     //     }
+            //     // }  
+            //     rebuild();   // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions
+            // }
+            // else {  // if they don't fit all
+            //     flag=true;
+            //     int num_of_exit_vehicles = num_of_pass_segment - (capacity - pointer_to_attica->get_segment(previous)->num_of_vehicles);
+
+            //     while (num_of_exit_vehicles>0 && prev_seg_veh>0) {
+            //         int rand_i = rand() % prev_seg_veh ;
+            //         // we pass as many as random ready vehicles fit
+            //         if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).is_gone() != true) {
+            //             if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).get_ready() == true) {
+            //                 pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_ready(false);
+            //                 pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_current_segment(seg_entrance->get_node()+1);
+            //                 delete vehicles[num_of_vehicles];
+            //                 vehicles[num_of_vehicles] = new vehicle(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i));
+            //                 pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).time_to_go();
+            //                  num_of_vehicles++;
+            //                 num_of_exit_vehicles--;
+            //                 pointer_to_attica->get_segment(previous)->rebuild();       // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions  
+            //             }
+            //         }
+            //     }
+            // }

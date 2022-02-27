@@ -6,7 +6,7 @@
 using std::string;
 using namespace std;
 
-attica::attica(const int NSegs, int K) : num_of_vehicles(0), Kappa(K) {
+attica::attica(const int NSegs, int K) : num_of_vehicles(0), Kappa(K), num_of_segments(NSegs) {
     cout << "Attica Highway is in operation !!!" << endl;
 
     segments = new segment*[NSegs];
@@ -21,6 +21,12 @@ attica::attica(const int NSegs, int K) : num_of_vehicles(0), Kappa(K) {
 
         num_of_vehicles+=segments[i]->get_num_of_vehicles();
     }
+}
+
+attica::~attica() {
+    for(int i=0; i<num_of_segments; i++)
+        delete segments[i];
+    delete segments;
 }
 
 void attica::operate(int NSegs, int Percent) {

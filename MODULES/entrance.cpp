@@ -42,6 +42,12 @@ entrance::entrance(int NSegs, int K, segment* pointer, int node_)
     }  
 }
 
+entrance::~entrance() {
+    for(int i=0; i<num_of_tolls; i++)
+        delete tolls[i];
+    delete tolls;
+}
+
 int entrance::operate(int NSegs, int K){
 //sub --- enter to the segment from entrance
     int vehicles_to_enter_counter=0;
@@ -53,7 +59,7 @@ int entrance::operate(int NSegs, int K){
         for(int i=0; i<num_of_tolls; i++) 
             for(int j=0; j<rand() % 3 + 1; j++){
                 vehicle v(random(node, NSegs));
-                v.set_current_segment(node);
+                //v.set_current_segment(node);
                 tolls[i]->add(v);
                 num_of_vehicles++;
         }
@@ -64,7 +70,7 @@ int entrance::operate(int NSegs, int K){
             if( pointer_to_segment->get_capacity() - pointer_to_segment->get_num_of_vehicles() > 0 ) {
                 if ( (tolls[i]->get_speed() == K && employe_tolls_limit>0) ||  (tolls[i]->get_speed() == 2*K && electronic_tolls_limit>0) ) {
                     pointer_to_segment->set_vehicle(pointer_to_segment->get_num_of_vehicles()-1, &tolls[i]->get_vehicle());
-                    pointer_to_segment->get_vehicle(pointer_to_segment->get_num_of_vehicles()-1).set_exit_segment(false);
+                    pointer_to_segment->get_vehicle(pointer_to_segment->get_num_of_vehicles()-1).set_ready(false);
                     pointer_to_segment->set_num_of_vehicles(pointer_to_segment->get_num_of_vehicles()+1);
                     tolls[i]->sub();
                     num_of_vehicles--;
@@ -81,7 +87,7 @@ int entrance::operate(int NSegs, int K){
         for(int i=0; i<num_of_tolls; i++) 
             for(int j=0; j<rand() % 3 + 1; j++){
                 vehicle v(random(node, NSegs));
-                v.set_current_segment(node);
+                //v.set_current_segment(node);
                 tolls[i]->add(v);
                 num_of_vehicles++;
             }
@@ -99,7 +105,7 @@ int entrance::operate(int NSegs, int K){
     for(int i=0; i<num_of_tolls; i++) 
         for(int j=0; j<rand() % 3 + 1; j++){
             vehicle v(random(node, NSegs));
-            v.set_current_segment(node);
+            //v.set_current_segment(node);
             tolls[i]->add(v);
             num_of_vehicles++;
         }
