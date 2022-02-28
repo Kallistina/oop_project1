@@ -28,9 +28,14 @@ public:
     void set_K(int K);
     void rebuild();
     vehicle get_vehicle(int i) { return *vehicles[i]; }
-    void set_vehicle(int i, vehicle* veh ) { vehicles[i] = veh; }
+    void set_vehicle(int i, vehicle* veh ) { 
+        delete vehicles[i]; 
+        vehicles[i] = new vehicle(*veh);  
+        vehicles[i]->set_ready(false); 
+        num_of_vehicles++;
+    }
     int get_num_of_vehicles() { return num_of_vehicles; }
-    void set_num_of_vehicles(int num) {  num_of_vehicles=num; }
+    void set_num_of_vehicles(int num) {  num_of_vehicles+=num; }
     int get_capacity() { return capacity; }
     void set_capacity(int cap) { capacity=cap; }
 };

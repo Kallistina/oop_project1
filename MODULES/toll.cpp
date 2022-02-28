@@ -10,15 +10,14 @@ int random (int low, int high);
 /////////////////////////////// TOLL ///////////////////////////////////
 toll::toll(int NSegs, int K, int Segment_i) : num_of_vehicles(0), speed(K) {
     num_of_vehicles=rand() % 3 + 1;
-    for(int i=0; i<num_of_vehicles; i++) {          //create rand vehicles for toll initialization
-        vehicle v(random(Segment_i, NSegs));
-        vehicles.push(v);
-    }
+    for(int i=0; i<num_of_vehicles; i++)          //create rand vehicles for toll initialization
+        vehicles.push(vehicle(random(Segment_i, NSegs)));
 }
 
-// toll::~toll() {
-//     vehicles.;
-// }
+toll::~toll() {
+    for(int i=0; i<vehicles.size(); i++) 
+        vehicles.pop();
+}
 
 int toll::get_num_of_vehicles() {  return num_of_vehicles; }
 

@@ -16,7 +16,7 @@ protected:
     int speed;
 public:
     toll(int NSegs, int K, int Segment_i);
-   //~toll();
+   ~toll();
     int get_num_of_vehicles();
     vehicle& get_vehicle();
     int get_speed();

@@ -230,3 +230,19 @@ Number of vehicles in Attica Highway : 43
             //         }
             //     }
             // }
+
+
+
+
+
+
+
+                int counter=1;
+    cout << "problhama     " << num_of_vehicles << endl;
+    for(int i=0; i<num_of_vehicles; i++) {
+        cout << "problhama" << i << endl;
+        if(vehicles[i]->is_gone()) 
+            break;
+        counter++;
+    }
+    num_of_vehicles = counter;
