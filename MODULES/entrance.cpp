@@ -63,7 +63,6 @@ int entrance::operate(int NSegs, int K){
     }
 
     while (pointer_to_segment->get_capacity() > pointer_to_segment->get_num_of_vehicles() && (employe_tolls_limit>0 || electronic_tolls_limit>0)) {
-        //cout << "tolll" << K << endl;
         for(int i=0; i<num_of_tolls; i++) {
             if( pointer_to_segment->get_capacity() >  pointer_to_segment->get_num_of_vehicles()) {
                 if ( (tolls[i]->get_speed() == K && employe_tolls_limit>0) ||  (tolls[i]->get_speed() == 2*K && electronic_tolls_limit>0) ) {
@@ -73,13 +72,12 @@ int entrance::operate(int NSegs, int K){
                     vehicles_to_enter_counter++;
                     if(tolls[i]->get_speed() == K ) employe_tolls_limit--;      //which limit should I reduce?
                     else electronic_tolls_limit--; 
- //cout << "tollkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkl" << endl;
                 }
                
             }
             else break;
         }
-        if(num_of_vehicles==0) {  //add rand vehicles in entrance's tolls
+        if(num_of_vehicles==0) {                //add rand vehicles in entrance's tolls
             for(int i=0; i<num_of_tolls; i++) 
                 for(int j=0; j<rand() % 3 + 1; j++){
                     tolls[i]->add(vehicle(random(node, NSegs)));
@@ -91,11 +89,10 @@ int entrance::operate(int NSegs, int K){
     if(employe_tolls_limit==0 && electronic_tolls_limit==0)  K++;
     else if(K!=1) K--;
 
-    for(int i=0; i<num_of_tolls; i++)
+    for(int i=0; i<num_of_tolls; i++)           //setting K for tolls
         tolls[i]->set_speed(K);
 
-        
-    pointer_to_segment->set_K(K);
+    pointer_to_segment->set_K(K);               // passing new K to segment
 
     for(int i=0; i<num_of_tolls; i++) //add rand vehicles in entrance's tolls
         for(int j=0; j<rand() % 3 + 1; j++){
