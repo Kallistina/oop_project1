@@ -19,6 +19,7 @@ private:
 public:  
     entrance(int NSegs, int K, segment* pointer, int node_);
     ~entrance();
+    void add(int NSegs);
     int operate(int NSegs, int K);
     int get_num_of_vehicles() { return num_of_vehicles; }
     int get_node() { return node; }

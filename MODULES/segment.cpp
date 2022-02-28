@@ -6,13 +6,14 @@
 using namespace std;
 int random (int low, int high);
 
-segment::segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node) 
-    :  previous(previous_seg), next(next_seg), pointer_to_attica(pointer), num_of_vehicles(0), Kappa(K) {
+segment::segment(int NSegs, int K, int previous_seg, attica* pointer, int node) 
+    :  previous(previous_seg), pointer_to_attica(pointer), num_of_vehicles(0), Kappa(K) {
 
     seg_entrance = new entrance(NSegs, K, this, node);
 
     cout << "Give capacity for segment " << seg_entrance->get_node() << endl;
     cin >> capacity ;
+    cout << endl;
 
     num_of_vehicles = rand() % 3 + 1;
     if(num_of_vehicles > capacity) num_of_vehicles = capacity;

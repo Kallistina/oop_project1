@@ -13,13 +13,12 @@ private:
     int num_of_vehicles;
     int capacity;
     int previous;
-    int next;
     int Kappa;
     attica* pointer_to_attica;
     entrance* seg_entrance;
     vehicle** vehicles;
 public:
-    segment(int NSegs, int K, int previous_seg, int next_seg, attica* pointer, int node);
+    segment(int NSegs, int K, int previous_seg, attica* pointer, int node);
     ~segment();
     int enter(int NSegs);
     void exit();

@@ -26,13 +26,13 @@ compile:
 
 ---> Στον constuctor μέσω της μεταβλητής exit περνάμε τον τελικό κόμβο κάθε οχήματος. Αρχικοποιούμε τον current_segment σε -1 και τον ready σε false. 
 
----> Στην set_current_segment με όρισμα i, ενημερώνουμε κάθε φορά το τμήμα στο οποίο βρίσκεται το όχημα. 
+---> 
 
 ---> Η exit_attica επιστέφει αν είναι έτοιμο το όχημα να βγει από τον αυτοκινητόδρομο ανάλογα με το αν η συνθήκη exit_node==current_segment είναι αληθής ή όχι.
 
----> Στην set_exit_segment με όρισμα ready ενημερώνουμε την κατάσταση ετοιμότητας του οχήματος.
+---> Στην exit_segment 
 
----> Η get_exit_segment επιστρέφει την κατάσταση ετοιμότητας του οχήματος.
+---> Η
 
 
                                         ---class toll---
@@ -99,12 +99,10 @@ compile:
 ---> Στην μέθοδο set_vehicle δεχόμαστε τη θέση του πίνακα και το όχημα που θέλουμε να περάσουμε σε αυτή τη θέση. Περνάμε το veh στη θέση i του πίνακα οχημάτων του τμήματος.
 
 ---> Στη μέθοδο enter καλείται η operate της εισόδου του κάθε τμήματος μέσα στην οποία γίνονται οι απαραίτητες διαδικασίες.
+Ενημερώνεται η attica για το πόσα αυτοκίνητα προστέθηκαν από τα διόδια της εισόδου.
+Επιστρέφει τον αριθμό των οχημάτων που προστέθηκαν από τα διόδια της εισόδου.
 
----> Στη μέθοδο exit χρησιμοποιούμε έναν δείκτη, τον copy_pointer προκειμένου να αντικαταστήσουμε τις ενδεχόμενες κενές θέσεις με τα οχήματα που παραμένουν στον πίνακα του segment. Για κάθε 
-όχημα του segment, ελέγχουμε αν πρέπει να αποχωρήσει από τον αυτοκινητόδρομο, αν ναι, αυξάνουμε τον μετρητή οχημάτων που έφυγαν από την Αττική κατά 1 και κάνουμε τη θέση του οχήματος που έφυγε 
-NULL. Αν δεν πρέπει να φύγει, ελέγχουμε αν ο copy_pointer δεν δείχνει στη θέση του οχήματος που εξετάζουμε τώρα, τότε, βάζουμε στη θέση που δείχνει ο copy_pointer το όχημα αυτό για να μην 
-παραμείνει κενή και κάνουμε τη προηγούμενη θέση του οχήματος NULL και ύστερα αυξάνουμε τον copy_pointer για να εξετάσουμε την επόμενη θέση του πίνακα. Στο τέλος μειώνουμε τα οχήματα του 
-τμήματατος σύμφωνα με τον counter.
+---> Στη μέθοδο exit 
 
 ---> Στη μέθοδο pass περνάμε στη μεταβλητή next_segment_num_of_vehicles τον αριθμό οχημάτων του επόμενου τμήματος. Κάνουμε false την κατάσταση ετοιμότητας του οχήματος που θα περάσουμε. Ύστερα 
 περνάμε στην τελευταία θέση του πίνακα οχημάτων του επόμενου τμήματος το όχημα που θέλουμε να κάνουμε pass του segment που εξετάζουμε τώρα. Αυξάνουμε τα οχήματα του επόμενου τμήματος κατά ένα 
@@ -118,131 +116,197 @@ segment. Αν αυτός ο αριθμός είναι μικρότερος ή ί
 που βρίσκονταν σε κατάσταση ετοιμότητας true ή αν έχουν παραμείνει ακόμα κάποια (flag=true). 
 
 ---> ///EXIT/// Στη μέθοδο operate αρχικά κάνουμε exit τα αυτοκίνητα που πρέπει να φύγουν από τον αυτοκινητόδρομο. 
+
 ///PASS/// Καλείται η pass η οποία θα επιστρέψει ένα flag για να δούμε αν θα τυπωθούν καθυστερήσεις ή όχι και πού.
+
 ///ENTER/// Ύστερα κάνουμε enter τα οχήματα από τα διόδια της εισόδου του τμήματος. 
-///PRINTS/// Χρησιμοποιούμε μία flag2 την οποία κάνουμε true αν ο αριθμός των οχημάτων που εισέρχονται στο τμήμα από την είσοδό του είναι μικρότερος από το πλήθος των οχημάτων που περιμένουν 
-στην είσοδο και τυπώνουμε το μήνυμα "Delays in entrance of node ". Αν ισχύει flag, τυπώνουμε το μήνυμα "Delays after the node" και το όνομα του κόμβου της εισόδου του τμήματος. Αν ισχύουν και 
-τα δύο αυτά, τυπώνουμε το μήνυμα "Keep a safe distance in the segment after the node " και το όνομα του κόμβου της εισόδου του τμήματος. 
+
+///PRINTS/// Χρησιμοποιούμε μία flag2 την οποία κάνουμε true αν ο αριθμός των οχημάτων που εισέρχονται στο τμήμα από την είσοδό του είναι μικρότερος από το πλήθος των οχημάτων που περιμένουν στην είσοδο και τυπώνουμε το μήνυμα "Delays in entrance of node ". 
+Αν ισχύει και η flag, τυπώνουμε το μήνυμα "Delays after the node" και το όνομα του κόμβου της εισόδου του τμήματος. 
+Αν δεν ισχύει κανένα, τυπώνουμε το μήνυμα "Keep a safe distance in the segment after the node " και το όνομα του κόμβου της εισόδου του τμήματος. 
 
 
                                         ---class attica---
 ---> Η attica έχει 3 private members, το num_of_vehicles που δείχνει πόσα οχήματα κινούνται στην αττική την τρέχουσα στιγμή, το Kappa (Κ), και έναν δείκτη στην αρχή του πίνακα segments. 
 
----> Στον construstor της δημιουργούμε έναν πίνακα με NSegs τμήματα. Όταν δημιουργούμε το πρώτο τμήμα, το previous_seg είναι -1 και όταν δημιουρούμε το τελευταίο τμήμα, το next_seg είναι -1. 
-
----> Σε όλα τα υπόλοιπα τμήματα το previous_seg είναι i-1, και το next_seg i+1. Ο δείκτης this δείχνει στην attica που ανήκει το κάθε τμήμα και το i αντιπροσωπεύει τον αριθμό του κόμβου κάθε 
-εισόδου του τμήματος.
+---> Στον construstor της δημιουργούμε έναν πίνακα με NSegs τμήματα. Σε όλα τα τμήματα το previous_seg είναι i-1, ο δείκτης this δείχνει στην attica που ανήκει το κάθε τμήμα και το i αντιπροσωπεύει τον αριθμό του κόμβου κάθε εισόδου του τμήματος.
 
 ---> Στη μέθοδο get_segment δεχόμαστε τη θέση του πίνακα στην οποία είναι το τμήμα που ψάχνουμε και επιστρέφουμε αυτό το τμήμα.
 
 ---> Στη μέθοδο set_K ενημερώνουμε το Κ.
 
----> Στη μέθοδο operate προσπελαύνουμε τα τμήματα από το τελευταίο στο αρχικό. Καλούμε την operate κάθε τμήματος με ενημερωμένο το Κ και αυξάνουμε τον αριθμό των οχημάτων της Αττικής ανάλογα με 
-το πόσα οχήματα κινούνται στο segment που εξετάζουμε εκείνη τη στιγμή. Τυπώνεται το πλήθος των οχημάτων του κάθε τμήματος και στο τέλος τυπώνεται ο αριθμός των οχημάτων όλης της Αττικής.
+---> Στη μέθοδο operate προσπελαύνουμε τα τμήματα από το τελευταίο στο αρχικό. Καλούμε την operate κάθε τμήματος με ενημερωμένο το Κ. 
+Τυπώνεται για κάθε κύκλο το πλήθος των οχημάτων του κάθε τμήματος και στο τέλος τυπώνεται ο αριθμός των οχημάτων όλης της Αττικής.
 
 
 Τιμές παραμέτρων - ΔΟΚΙΜΕΣ:
 
 1)  ./run 1 3 4 20
+για capacity : 50,60,35 αντίστοιχα
+
+Give capacity for segment 0
+50
+Give capacity for segment 1
+60
+Give capacity for segment 2
+35
 
 Attica Highway is in operation !!!
+
 Give capacity for segment 0
-20
+50
+
 Give capacity for segment 1
-15
+60
+
 Give capacity for segment 2
-30
-Delays in entrance of node 2
-Number of vehicles in Segment 2 : 10
-Delays in entrance of node 1
-Number of vehicles in Segment 1 : 12
+35
+
+Keep a safe distance in the segment after the node 2
+Number of vehicles in Segment 2 : 12
+Keep a safe distance in the segment after the node 1
+Number of vehicles in Segment 1 : 15
 Keep a safe distance in the segment after the node 0
-Number of vehicles in Segment 0 : 14
-Number of vehicles in Attica Highway : 43
+Number of vehicles in Segment 0 : 13
+Number of vehicles in Attica Highway : 40
 
 
-               // pointer_to_attica->get_segment(previous)->set_num_of_vehicles(pointer_to_attica->get_segment(previous)->get_num_of_vehicles()-1);
-                            //*vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->get_vehicle(rand_i);
-                            //pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_exit_segment(-10);
-                           
-                            // int copy_pointer=0;  
-                            // for(int i=0; i<prev_seg_veh; i++){
-                                 
-                            //     if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment() != -10) {
-                            //         if(num_of_vehicles==1 || i!=copy_pointer) {
-                            //             pointer_to_attica->get_segment(previous)->get_vehicle(copy_pointer) = pointer_to_attica->get_segment(previous)->get_vehicle(i);
-                            //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_exit_segment(-10);
-                            
-                            //         }
-                            //         copy_pointer++;
-                            //     }  
-                            // }
+1)  ./run 2 5 10 70
+για capacity : 60,100,20,5,200 αντίστοιχα
+
+Attica Highway is in operation !!!
+
+Give capacity for segment 0
+60
+
+Give capacity for segment 1
+100
+
+Give capacity for segment 2
+20
+
+Give capacity for segment 3
+5
+
+Give capacity for segment 4
+200
+
+Keep a safe distance in the segment after the node 4
+Number of vehicles in Segment 4 : 31
+Delays in entrance of node 3
+Number of vehicles in Segment 3 : 5
+Delays after the node 2
+Number of vehicles in Segment 2 : 20
+Keep a safe distance in the segment after the node 1
+Number of vehicles in Segment 1 : 33
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 31
+Number of vehicles in Attica Highway : 120
+
+Delays after the node 4
+Number of vehicles in Segment 4 : 50
+Delays in entrance of node 3
+Delays after the node 3
+Number of vehicles in Segment 3 : 5
+Delays after the node 2
+Number of vehicles in Segment 2 : 20
+Delays after the node 1
+Number of vehicles in Segment 1 : 59
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 58
+Number of vehicles in Attica Highway : 192
 
 
+3)./run 10 3 5 50
+για capacity : 10,20,80 αντίστοιχα
 
-                            
-            // num_of_pass_segment=0;
-            // for(int i=0; i<prev_seg_veh; i++)                                                   // how many vehicles are ready
-            //     if(pointer_to_attica->get_segment(previous)->get_vehicle(i).exit_segment()==true)
-            //         num_of_pass_segment++;
+Attica Highway is in operation !!!
 
-            // if(capacity >= num_of_pass_segment) {   // can we fit them all?
-            //     for(int i=0; i<prev_seg_veh; i++)                                               // pass the vehicles to the segment
-            //         if(pointer_to_attica->get_segment(previous)->get_vehicle(i).exit_segment()==true) {
-            //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_ready(false);
-            //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_ready(seg_entrance->get_node()+1);
-            //             pointer_to_attica->get_segment(previous)->set_num_of_vehicles(pointer_to_attica->get_segment(previous)->get_num_of_vehicles()-1);
-            //             *vehicles[num_of_vehicles] = pointer_to_attica->get_segment(previous)->get_vehicle(i);
-            //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_ready(-10);
-            //             num_of_vehicles++;
-            //         }   
-                
-            //     // int copy_pointer=0;     // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions
-            //     // for(int i=0; i<prev_seg_veh; i++) {
-            //     //     if(pointer_to_attica->get_segment(previous)->get_vehicle(i).get_exit_segment() != -10) {
-            //     //         if(prev_seg_veh==1 || i!=copy_pointer) {
-            //     //             pointer_to_attica->get_segment(previous)->get_vehicle(copy_pointer) = pointer_to_attica->get_segment(previous)->get_vehicle(i);
-            //     //             pointer_to_attica->get_segment(previous)->get_vehicle(i).set_exit_segment(-10);
-            //     //         }
-            //     //         copy_pointer++;
-            //     //     }
-            //     // }  
-            //     rebuild();   // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions
-            // }
-            // else {  // if they don't fit all
-            //     flag=true;
-            //     int num_of_exit_vehicles = num_of_pass_segment - (capacity - pointer_to_attica->get_segment(previous)->num_of_vehicles);
+Give capacity for segment 0
+10
 
-            //     while (num_of_exit_vehicles>0 && prev_seg_veh>0) {
-            //         int rand_i = rand() % prev_seg_veh ;
-            //         // we pass as many as random ready vehicles fit
-            //         if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).is_gone() != true) {
-            //             if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).get_ready() == true) {
-            //                 pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_ready(false);
-            //                 pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_current_segment(seg_entrance->get_node()+1);
-            //                 delete vehicles[num_of_vehicles];
-            //                 vehicles[num_of_vehicles] = new vehicle(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i));
-            //                 pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).time_to_go();
-            //                  num_of_vehicles++;
-            //                 num_of_exit_vehicles--;
-            //                 pointer_to_attica->get_segment(previous)->rebuild();       // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions  
-            //             }
-            //         }
-            //     }
-            // }
+Give capacity for segment 1
+20
 
+Give capacity for segment 2
+80
 
+Keep a safe distance in the segment after the node 2
+Number of vehicles in Segment 2 : 16
+Keep a safe distance in the segment after the node 1
+Number of vehicles in Segment 1 : 15
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 41
 
+Delays after the node 2
+Number of vehicles in Segment 2 : 26
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 56
 
+Delays after the node 2
+Number of vehicles in Segment 2 : 38
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 68
 
+Delays after the node 2
+Number of vehicles in Segment 2 : 55
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 85
 
+Delays after the node 2
+Number of vehicles in Segment 2 : 74
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 104
 
-                int counter=1;
-    cout << "problhama     " << num_of_vehicles << endl;
-    for(int i=0; i<num_of_vehicles; i++) {
-        cout << "problhama" << i << endl;
-        if(vehicles[i]->is_gone()) 
-            break;
-        counter++;
-    }
-    num_of_vehicles = counter;
+Delays after the node 2
+Number of vehicles in Segment 2 : 80
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 110
+
+Delays after the node 2
+Number of vehicles in Segment 2 : 80
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 110
+
+Delays after the node 2
+Number of vehicles in Segment 2 : 80
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 110
+
+Delays after the node 2
+Number of vehicles in Segment 2 : 80
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 110
+
+Delays after the node 2
+Number of vehicles in Segment 2 : 80
+Delays after the node 1
+Number of vehicles in Segment 1 : 20
+Keep a safe distance in the segment after the node 0
+Number of vehicles in Segment 0 : 10
+Number of vehicles in Attica Highway : 110

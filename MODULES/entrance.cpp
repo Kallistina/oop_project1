@@ -48,20 +48,22 @@ entrance::~entrance() {
     delete tolls;
 }
 
+void entrance::add(int NSegs) {
+    for(int i=0; i<num_of_tolls; i++) 
+        for(int j=0; j<rand() % 3 + 1; j++){
+            tolls[i]->add(vehicle(random(node, NSegs)));
+            num_of_vehicles++;
+    }
+}
+
 int entrance::operate(int NSegs, int K){
 //sub --- enter to the segment from entrance
     int vehicles_to_enter_counter=0;
     int employe_tolls_limit = K;
     int electronic_tolls_limit = 2*K;
 
-    if(num_of_vehicles==0) {      //add rand vehicles in entrance's tolls
-        for(int i=0; i<num_of_tolls; i++) 
-            for(int j=0; j<rand() % 3 + 1; j++){
-                tolls[i]->add(vehicle(random(node, NSegs)));
-                num_of_vehicles++;
-        }
-    }
-
+    if(num_of_vehicles==0) add(NSegs);      //add rand vehicles in entrance's tolls
+        
     while (pointer_to_segment->get_capacity() > pointer_to_segment->get_num_of_vehicles() && (employe_tolls_limit>0 || electronic_tolls_limit>0)) {
         for(int i=0; i<num_of_tolls; i++) {
             if( pointer_to_segment->get_capacity() >  pointer_to_segment->get_num_of_vehicles()) {
@@ -77,13 +79,8 @@ int entrance::operate(int NSegs, int K){
             }
             else break;
         }
-        if(num_of_vehicles==0) {                //add rand vehicles in entrance's tolls
-            for(int i=0; i<num_of_tolls; i++) 
-                for(int j=0; j<rand() % 3 + 1; j++){
-                    tolls[i]->add(vehicle(random(node, NSegs)));
-                    num_of_vehicles++;
-            }
-        }
+
+        if(num_of_vehicles==0) add(NSegs);      //add rand vehicles in entrance's tolls
     }
 //it's K time
     if(employe_tolls_limit==0 && electronic_tolls_limit==0)  K++;
@@ -92,13 +89,10 @@ int entrance::operate(int NSegs, int K){
     for(int i=0; i<num_of_tolls; i++)           //setting K for tolls
         tolls[i]->set_speed(K);
 
-    pointer_to_segment->set_K(K);               // passing new K to segment
+    pointer_to_segment->set_K(K);              // passing new K to segment
 
-    for(int i=0; i<num_of_tolls; i++) //add rand vehicles in entrance's tolls
-        for(int j=0; j<rand() % 3 + 1; j++){
-            tolls[i]->add(vehicle(random(node, NSegs)));
-            num_of_vehicles++;
-        }
+//add rand vehicles in entrance's tolls
+    if(num_of_vehicles==0) add(NSegs);      
     
     return vehicles_to_enter_counter;
 }

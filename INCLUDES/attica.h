@@ -3,7 +3,6 @@
 #include "segment.h"
 
 using namespace std;
-
 class segment;
 
 class attica{
@@ -15,8 +14,8 @@ private:
 public:
     attica(int NSegs, int K);
     ~attica();
-    void operate(int NSegs, int Percent);
     segment* get_segment(int i) { return segments[i]; }
+    void operate(int Percent);
     void set_K(int K) { Kappa=K; }
     void set_vehicles(int i) { num_of_vehicles += i; }
 };

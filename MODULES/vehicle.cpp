@@ -19,9 +19,9 @@ vehicle::vehicle(const vehicle& copy_vehicle) {
     this->ready = copy_vehicle.ready;
 }
 
-void vehicle::set_ready(bool ready_) { ready=ready_; }
-
 bool vehicle::get_ready() { return ready; }
+
+void vehicle::set_ready(bool ready_) { ready=ready_; }
 
 int vehicle::get_exit_node() { return exit_node; }
 
@@ -32,9 +32,6 @@ bool vehicle::exit_attica(int current_segment) {
     return false;
 }
 
-void vehicle::time_to_go() { gone=1; }
+void vehicle::time_to_go() { gone=true; }
 
-bool vehicle::is_gone() {
-    if(gone == 1) return true;   
-    return false;
-}
+bool vehicle::is_gone() {  return gone; }
