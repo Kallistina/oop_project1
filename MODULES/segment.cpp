@@ -70,20 +70,20 @@ void segment::exit(){
 
 bool segment::pass(int Percent){
 
-    bool flag=false;
+    int passed_vehicles=0;
+    int ready_vehicles=0;
     if(previous!=-1) {
         int prev_seg_veh=pointer_to_attica->get_segment(previous)->num_of_vehicles;          // number of vehicles of the previous segment
         if(prev_seg_veh!=0) {
 
-            int num_of_pass_segment = Percent*(prev_seg_veh-1)/100 ;                         // how many vehicles will be ready to go to the next segment
+            ready_vehicles = Percent*(prev_seg_veh-1)/100 ;                                  // how many vehicles will be ready to go to the next segment
 
-            for(int i=0; i<num_of_pass_segment; i++) {                                      // we make random vehicles of the previous segment true = ready
+            for(int i=0; i<ready_vehicles; i++) {                                           // we make random vehicles of the previous segment true = ready
                 int rand_i = rand() % prev_seg_veh ;
                 pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).set_ready(true);
             }
-    
-            while (capacity > num_of_vehicles && num_of_pass_segment < 0) {                // we pass as many as random ready vehicles fit
-                flag=true;
+
+            while (capacity > num_of_vehicles && ready_vehicles < 0) {                      // we pass as many as random ready vehicles fit
                 int rand_i = rand() % prev_seg_veh ;
                 if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).is_gone() != true) {
                     if(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).get_ready() == true) {   // pass checked
@@ -91,14 +91,16 @@ bool segment::pass(int Percent){
                         vehicles[num_of_vehicles] = new vehicle(pointer_to_attica->get_segment(previous)->get_vehicle(rand_i));
                         pointer_to_attica->get_segment(previous)->get_vehicle(rand_i).time_to_go();
                         pointer_to_attica->get_segment(previous)->set_num_of_vehicles(-1);
-                        num_of_pass_segment--;
-                        pointer_to_attica->get_segment(previous)->rebuild();                // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions  
+                        pointer_to_attica->get_segment(previous)->rebuild();  // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions  
+                        ready_vehicles--;
+                        passed_vehicles++;               
                     }
                 }
             }
         }
     } 
-    return flag;
+    if(ready_vehicles > passed_vehicles) return true;
+    return false;
 }
 
 void segment::operate(int NSegs, int K, int Percent){
