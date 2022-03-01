@@ -30,8 +30,8 @@ segment::~segment() {
 }
 
 void segment::set_K(int K) {
-    Kappa=K;
-    pointer_to_attica->set_K(Kappa);
+    Kappa=K; 
+    pointer_to_attica->set_K(Kappa); 
 }
 
 void segment::rebuild() {
@@ -65,7 +65,6 @@ void segment::exit(){
             flag=true;
         }
     }
-
     if(flag) rebuild();
 }
 
@@ -113,7 +112,8 @@ void segment::operate(int NSegs, int K, int Percent){
     bool flag = pass(Percent);
 
 //ENTER
-    int enter_toll_vehicles= enter(NSegs);  
+    int enter_toll_vehicles= 0;  
+    if(capacity > num_of_vehicles) enter_toll_vehicles= enter(NSegs);
 
 //PRINTS
     bool flag2=false;
