@@ -23,9 +23,7 @@ bool vehicle::get_ready() { return ready; }
 
 void vehicle::set_ready(bool ready_) { ready=ready_; }
 
-int vehicle::get_exit_node() { return exit_node; }
-
-bool vehicle::exit_segment() { return ready; }    
+int vehicle::get_exit_node() { return exit_node; }   
 
 bool vehicle::exit_attica(int current_segment) {
     if(exit_node==current_segment) return true;    

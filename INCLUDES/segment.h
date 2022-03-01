@@ -12,13 +12,12 @@ class segment {
 private:
     int num_of_vehicles;
     int capacity;
-    int previous;
     int Kappa;
     attica* pointer_to_attica;
     entrance* seg_entrance;
     vehicle** vehicles;
 public:
-    segment(int NSegs, int K, int previous_seg, attica* pointer, int node);
+    segment(int NSegs, int K, int node, attica* pointer);
     ~segment();
     int enter(int NSegs);
     void exit();

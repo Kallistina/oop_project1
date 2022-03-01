@@ -12,7 +12,7 @@ attica::attica(const int NSegs, int K) : num_of_vehicles(0), Kappa(K), num_of_se
     segments = new segment*[num_of_segments];
 
     for(int i=0; i<num_of_segments; i++){
-        segments[i] = new segment(num_of_segments, Kappa, i-1, this, i);
+        segments[i] = new segment(num_of_segments, Kappa, i, this);
         num_of_vehicles+=segments[i]->get_num_of_vehicles();
     }
 }

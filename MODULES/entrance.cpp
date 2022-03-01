@@ -37,7 +37,7 @@ entrance::entrance(int NSegs, int K, segment* pointer, int node_)
                 rand_num_of_employe_tolls--;
             }
         }
-        tolls[i]->set_speed(K);
+        tolls[i]->set_Kappa(K);
         num_of_vehicles+=tolls[i]->get_num_of_vehicles();
     }  
 }
@@ -67,27 +67,26 @@ int entrance::operate(int NSegs, int K){
     while (pointer_to_segment->get_capacity() > pointer_to_segment->get_num_of_vehicles() && (employe_tolls_limit>0 || electronic_tolls_limit>0)) {
         for(int i=0; i<num_of_tolls; i++) {
             if( pointer_to_segment->get_capacity() >  pointer_to_segment->get_num_of_vehicles()) {
-                if ( (tolls[i]->get_speed() == K && employe_tolls_limit>0) ||  (tolls[i]->get_speed() == 2*K && electronic_tolls_limit>0) ) {
+                if ( (tolls[i]->get_Kappa() == K && employe_tolls_limit>0) ||  (tolls[i]->get_Kappa() == 2*K && electronic_tolls_limit>0) ) {
                     pointer_to_segment->set_vehicle(pointer_to_segment->get_num_of_vehicles(), &tolls[i]->get_vehicle());
                     tolls[i]->sub();
                     num_of_vehicles--;
                     vehicles_to_enter_counter++;
-                    if(tolls[i]->get_speed() == K ) employe_tolls_limit--;      //which limit should I reduce?
+
+                    if(tolls[i]->get_Kappa() == K ) employe_tolls_limit--;      //which limit should I reduce?
                     else electronic_tolls_limit--; 
                 }
                
             }
             else break;
         }
-
-        if(num_of_vehicles==0) add(NSegs);      //add rand vehicles in entrance's tolls
     }
 //it's K time
     if(employe_tolls_limit==0 && electronic_tolls_limit==0)  K++;
     else if(K!=1) K--;
 
     for(int i=0; i<num_of_tolls; i++)           //setting K for tolls
-        tolls[i]->set_speed(K);
+        tolls[i]->set_Kappa(K);
 
     pointer_to_segment->set_K(K);              // passing new K to segment
 
