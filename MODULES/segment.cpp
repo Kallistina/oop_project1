@@ -37,7 +37,7 @@ void segment::set_K(int K) {
 void segment::rebuild() {
     for(int i=1; i<num_of_vehicles; i++) {   //bubble sort
         for(int j=num_of_vehicles; j<i-1; j--) {
-            if(vehicles[j-1]->is_gone() < vehicles[j]->is_gone()) {
+            if(vehicles[j-1]->is_gone()==true && vehicles[j]->is_gone()==false) {
                 vehicle temp_veh(vehicles[j-1]->get_exit_node());
                 temp_veh.set_ready(vehicles[j-1]->get_ready());
                 delete vehicles[j-1];
