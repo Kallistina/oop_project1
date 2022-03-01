@@ -91,7 +91,7 @@ int entrance::operate(int NSegs, int K){
     pointer_to_segment->set_K(K);              // passing new K to segment
 
 //add rand vehicles in entrance's tolls
-    if(num_of_vehicles==0) add(NSegs);      
+    add(NSegs);      
     
     return vehicles_to_enter_counter;
 }

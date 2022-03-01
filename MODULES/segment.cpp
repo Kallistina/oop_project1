@@ -60,7 +60,7 @@ void segment::exit(){
     for(int i=0; i<num_of_vehicles; i++) {  
         if(vehicles[i]->is_gone() == false && vehicles[i]->exit_attica(seg_entrance->get_node())) {
             vehicles[i]->time_to_go();
-            num_of_vehicles -=1;
+            num_of_vehicles --;
             pointer_to_attica->set_vehicles(-1);
             flag=true;
         }
@@ -73,8 +73,9 @@ bool segment::pass(int Percent){
     int passed_vehicles=0;
     int ready_vehicles=0;
     int previous_segment = seg_entrance->get_node()-1;
+
     if(previous_segment != -1) {
-        int prev_seg_veh=pointer_to_attica->get_segment(previous_segment)->num_of_vehicles;          // number of vehicles of the previous segment
+        int prev_seg_veh=pointer_to_attica->get_segment(previous_segment)->num_of_vehicles;       // number of vehicles of the previous segment
         if(prev_seg_veh!=0) {
 
             ready_vehicles = Percent*(prev_seg_veh-1)/100 ;                                  // how many vehicles will be ready to go to the next segment
@@ -86,16 +87,14 @@ bool segment::pass(int Percent){
 
             while (capacity > num_of_vehicles && ready_vehicles < 0) {                      // we pass as many as random ready vehicles fit
                 int rand_i = rand() % prev_seg_veh ;
-                if(pointer_to_attica->get_segment(previous_segment)->get_vehicle(rand_i).is_gone() != true) {
-                    if(pointer_to_attica->get_segment(previous_segment)->get_vehicle(rand_i).get_ready() == true) {   // pass checked
-                        delete vehicles[num_of_vehicles];
-                        vehicles[num_of_vehicles] = new vehicle(pointer_to_attica->get_segment(previous_segment)->get_vehicle(rand_i));
-                        pointer_to_attica->get_segment(previous_segment)->get_vehicle(rand_i).time_to_go();
-                        pointer_to_attica->get_segment(previous_segment)->set_num_of_vehicles(-1);
-                        pointer_to_attica->get_segment(previous_segment)->rebuild();  // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions  
-                        ready_vehicles--;
-                        passed_vehicles++;               
-                    }
+                if(pointer_to_attica->get_segment(previous_segment)->get_vehicle(rand_i).get_ready() == true) {   // pass checked
+                    delete vehicles[num_of_vehicles];
+                    vehicles[num_of_vehicles] = new vehicle(pointer_to_attica->get_segment(previous_segment)->get_vehicle(rand_i));
+                    pointer_to_attica->get_segment(previous_segment)->get_vehicle(rand_i).time_to_go();
+                    pointer_to_attica->get_segment(previous_segment)->set_num_of_vehicles(-1);
+                    pointer_to_attica->get_segment(previous_segment)->rebuild();  // we should rebuild the array of vehicles of the previous segment so that the vehicles will be in continuous positions  
+                    ready_vehicles--;
+                    passed_vehicles++;               
                 }
             }
         }
