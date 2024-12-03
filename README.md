@@ -1,4 +1,8 @@
-# "Object-Oriented Programming - Attiki Odos Project
+# Object-Oriented Programming - Attiki Odos Project
+
+### Course:
+- Αντικειμενοστραφής Προγραμματισμός (Object-Oriented Programming)
+- Κ10
 
 ## Introduction
 
